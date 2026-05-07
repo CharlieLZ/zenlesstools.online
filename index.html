@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ZZZ Tools Hub - Zenless Zone Zero Codes, Events, Builds & Pull Planner</title>
+  <meta name="description" content="A fan-made Zenless Zone Zero tools hub with ZZZ codes, event calendar, character builds, pull planner, material calculator, banner countdown, and beginner guides." />
+  <meta name="keywords" content="ZZZ codes, Zenless Zone Zero codes, ZZZ pull planner, ZZZ events, Zenless Zone Zero builds, ZZZ material calculator, ZZZ team builder" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://example.com/" />
+
+  <meta property="og:title" content="ZZZ Tools Hub - Codes, Events, Builds & Pull Planner" />
+  <meta property="og:description" content="Track Zenless Zone Zero codes, events, banners, builds, and pull plans in one fast fan-made hub." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://example.com/og-image.jpg" />
+
+  <meta name="theme-color" content="#0b0b10" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ZZZ Tools Hub",
+    "url": "https://example.com/",
+    "description": "A fan-made tools hub for Zenless Zone Zero players.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://example.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is this an official Zenless Zone Zero website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. ZZZ Tools Hub is a fan-made website created to help players track codes, events, builds, banners, and planning tools."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What can I do with the ZZZ Pull Planner?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can enter your current Polychrome, tapes, pity count, guarantee status, and target pulls to estimate whether you can reach your goal before a banner ends."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How often should ZZZ codes and events be updated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Codes and events should be checked after livestreams, version updates, limited events, and official social media announcements."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #08080b;
+      --bg-soft: #111116;
+      --card: #18181f;
+      --card-2: #202028;
+      --border: #2c2c36;
+      --text: #f5f5f7;
+      --muted: #a6a6b3;
+      --yellow: #f7d84b;
+      --orange: #ff4d2e;
+      --cyan: #00d1ff;
+      --green: #39e58c;
+      --danger: #ff5570;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(247, 216, 75, 0.16), transparent 28%),
+        radial-gradient(circle at 82% 14%, rgba(0, 209, 255, 0.16), transparent 30%),
+        radial-gradient(circle at 50% 100%, rgba(255, 77, 46, 0.12), transparent 28%),
+        var(--bg);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .notice {
+      background: linear-gradient(90deg, rgba(247, 216, 75, 0.18), rgba(0, 209, 255, 0.12));
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      color: #fff8d3;
+      font-size: 13px;
+      text-align: center;
+      padding: 9px 16px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(8, 8, 11, 0.78);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: #090909;
+      font-weight: 1000;
+      background:
+        linear-gradient(135deg, var(--yellow), #fff2a2 46%, var(--orange));
+      box-shadow: 0 0 24px rgba(247, 216, 75, 0.34);
+      transform: rotate(-3deg);
+    }
+
+    .logo span:last-child {
+      font-size: 19px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--yellow);
+    }
+
+    .nav-cta {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--yellow);
+      color: #090909 !important;
+      font-weight: 800;
+    }
+
+    .hero {
+      padding: 84px 0 54px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid rgba(247, 216, 75, 0.24);
+      background: rgba(247, 216, 75, 0.08);
+      color: #fff0a6;
+      border-radius: 999px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 0 6px rgba(57, 229, 140, 0.12);
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 82px);
+      line-height: 0.96;
+      letter-spacing: -0.075em;
+      margin-bottom: 22px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(100deg, #fff, var(--yellow) 45%, var(--orange));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 660px;
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-weight: 850;
+      border: 1px solid transparent;
+      transition: transform 0.18s ease, border 0.18s ease, background 0.18s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--yellow);
+      color: #08080b;
+      box-shadow: 0 14px 36px rgba(247, 216, 75, 0.22);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.12);
+      color: var(--text);
+    }
+
+    .quick-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 620px;
+    }
+
+    .stat {
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.045);
+      border-radius: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 22px;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hero-card {
+      position: relative;
+      padding: 24px;
+      border-radius: 32px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04)),
+        var(--card);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -80px -90px auto auto;
+      width: 210px;
+      height: 210px;
+      background: var(--yellow);
+      opacity: 0.16;
+      filter: blur(48px);
+      border-radius: 50%;
+    }
+
+    .version-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 900;
+      color: #08080b;
+      background: var(--yellow);
+      border-radius: 999px;
+      padding: 7px 10px;
+      margin-bottom: 18px;
+    }
+
+    .hero-card h2 {
+      font-size: 34px;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
+    }
+
+    .hero-card p {
+      font-size: 15px;
+      margin-bottom: 18px;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 18px 0;
+    }
+
+    .time-box {
+      background: #0d0d12;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 14px 8px;
+      text-align: center;
+    }
+
+    .time-box strong {
+      display: block;
+      font-size: 24px;
+      color: var(--cyan);
+    }
+
+    .time-box span {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .reward-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 10px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.055);
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    section {
+      padding: 52px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      letter-spacing: -0.055em;
+      line-height: 1.02;
+    }
+
+    .section-head p {
+      max-width: 520px;
+      color: var(--muted);
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.025)),
+        var(--card);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: transform 0.18s ease, border 0.18s ease, background 0.18s ease;
+      min-height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(247, 216, 75, 0.35);
+      background:
+        linear-gradient(180deg, rgba(247,216,75,0.08), rgba(255,255,255,0.025)),
+        var(--card);
+    }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      background: rgba(247, 216, 75, 0.14);
+      color: var(--yellow);
+      font-size: 22px;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .code-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .code-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 16px;
+      border-radius: 18px;
+      background: #101016;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .code-main strong {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: var(--yellow);
+      font-size: 18px;
+      letter-spacing: 0.03em;
+    }
+
+    .code-main span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 3px;
+    }
+
+    .copy-btn {
+      border: 0;
+      background: var(--yellow);
+      color: #090909;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .event {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .event-date {
+      color: var(--cyan);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .progress {
+      height: 9px;
+      background: #0b0b10;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .progress > span {
+      display: block;
+      height: 100%;
+      width: 64%;
+      background: linear-gradient(90deg, var(--yellow), var(--orange));
+    }
+
+    .character {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .character::after {
+      content: attr(data-rank);
+      position: absolute;
+      right: 16px;
+      top: 8px;
+      font-size: 64px;
+      font-weight: 1000;
+      color: rgba(247,216,75,0.08);
+      line-height: 1;
+    }
+
+    .avatar {
+      width: 66px;
+      height: 66px;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(0,209,255,0.16), rgba(247,216,75,0.18));
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 26px;
+      margin-bottom: 14px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      padding: 5px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .planner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    label {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    input, select {
+      width: 100%;
+      background: #0f0f15;
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 12px 12px;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--yellow);
+    }
+
+    .result {
+      background:
+        linear-gradient(145deg, rgba(247,216,75,0.11), rgba(0,209,255,0.06)),
+        #101016;
+      border: 1px solid rgba(247,216,75,0.2);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+
+    .result-number {
+      font-size: 56px;
+      letter-spacing: -0.06em;
+      line-height: 1;
+      color: var(--yellow);
+      font-weight: 1000;
+      margin: 12px 0;
+    }
+
+    .result small {
+      color: var(--muted);
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 20px;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .table th,
+    .table td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-size: 14px;
+    }
+
+    .table th {
+      color: var(--yellow);
+      background: rgba(247,216,75,0.06);
+    }
+
+    .table td {
+      color: var(--muted);
+    }
+
+    .faq {
+      display: grid;
+      gap: 12px;
+    }
+
+    details {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px;
+      padding: 16px 18px;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 850;
+      color: var(--text);
+    }
+
+    details p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 38px 0 56px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.18);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 20px;
+    }
+
+    .disclaimer {
+      font-size: 13px;
+      max-width: 760px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-end;
+      font-size: 13px;
+    }
+
+    .footer-links a:hover {
+      color: var(--yellow);
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .planner,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-4,
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section-head {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: inline-flex;
+      }
+
+      .hero {
+        padding-top: 54px;
+      }
+
+      .quick-stats,
+      .grid-4,
+      .grid-3,
+      .form-grid,
+      .countdown {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 44px;
+      }
+
+      .code-item {
+        grid-template-columns: 1fr;
+      }
+
+      .copy-btn {
+        width: 100%;
+      }
+
+      .table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="notice">
+    Fan-made ZZZ tools hub. Not affiliated with HoYoverse, miHoYo, or Zenless Zone Zero.
+  </div>
+
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#top" aria-label="ZZZ Tools Hub Home">
+        <span class="logo-mark">ZZZ</span>
+        <span>Tools Hub</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#codes">Codes</a>
+        <a href="#events">Events</a>
+        <a href="#characters">Builds</a>
+        <a href="#planner">Pull Planner</a>
+        <a href="#tools">Tools</a>
+        <a class="nav-cta" href="#planner">Plan Pulls</a>
+      </nav>
+
+      <a class="btn btn-secondary mobile-menu" href="#tools">Menu</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"><span class="pulse"></span> Version 2.8 tools ready</div>
+          <h1>
+            Zenless Zone Zero
+            <span class="gradient-text">codes, events & pull planning</span>
+            in one place.
+          </h1>
+          <p>
+            Track active ZZZ codes, limited-time events, banner countdowns, character builds,
+            and resource planning without digging through ten tabs every day.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#codes">Get Active Codes</a>
+            <a class="btn btn-secondary" href="#planner">Open Pull Planner</a>
+          </div>
+
+          <div class="quick-stats">
+            <div class="stat">
+              <strong>6</strong>
+              <span>Core player tools</span>
+            </div>
+            <div class="stat">
+              <strong>2.8</strong>
+              <span>Current version focus</span>
+            </div>
+            <div class="stat">
+              <strong>0$</strong>
+              <span>Free fan-made hub</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Current version highlight">
+          <span class="version-badge">LIVE PATCH</span>
+          <h2>New: Eridan Sunset</h2>
+          <p>
+            Check current events, banner timing, new agents, rewards, and daily tasks before the update window closes.
+          </p>
+
+          <div class="countdown" aria-label="Sample banner countdown">
+            <div class="time-box"><strong id="days">--</strong><span>Days</span></div>
+            <div class="time-box"><strong id="hours">--</strong><span>Hours</span></div>
+            <div class="time-box"><strong id="mins">--</strong><span>Mins</span></div>
+            <div class="time-box"><strong id="secs">--</strong><span>Secs</span></div>
+          </div>
+
+          <div class="reward-row">
+            <span class="chip">🎁 Check-in pulls</span>
+            <span class="chip">🧊 Promeia</span>
+            <span class="chip">✨ Lucia</span>
+            <span class="chip">⏱ Event countdown</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="tools">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Daily ZZZ player toolkit</h2>
+          </div>
+          <p>Build the site around recurring player anxiety: missing rewards, wasting pulls, wrong builds, and messy resource farming.</p>
+        </div>
+
+        <div class="grid-4">
+          <a class="card" href="#codes">
+            <div class="icon">🎟️</div>
+            <h3>Codes Tracker</h3>
+            <p>Active codes, expired codes, rewards, and one-click copy for fast redemption.</p>
+          </a>
+          <a class="card" href="#events">
+            <div class="icon">📅</div>
+            <h3>Event Calendar</h3>
+            <p>Version events, requirements, rewards, deadlines, and daily checklist notes.</p>
+          </a>
+          <a class="card" href="#planner">
+            <div class="icon">🧮</div>
+            <h3>Pull Planner</h3>
+            <p>Estimate whether your Polychrome, tapes, pity, and guarantee can reach a target banner.</p>
+          </a>
+          <a class="card" href="#characters">
+            <div class="icon">⚔️</div>
+            <h3>Build Guides</h3>
+            <p>Quick builds for agents, W-Engines, Drive Discs, stats, and beginner teams.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="codes">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Active ZZZ codes</h2>
+          </div>
+          <p>Replace these sample codes with real verified codes from official channels before publishing.</p>
+        </div>
+
+        <div class="code-list">
+          <div class="code-item">
+            <div class="code-main">
+              <strong>ZZZTOOLS2026</strong>
+              <span>Sample reward: Polychrome ×300, Denny ×30,000 · Status: Active sample</span>
+            </div>
+            <button class="copy-btn" data-code="ZZZTOOLS2026">Copy</button>
+          </div>
+
+          <div class="code-item">
+            <div class="code-main">
+              <strong>ERIDANSUNSET</strong>
+              <span>Sample reward: Senior Investigator Log ×2 · Status: Active sample</span>
+            </div>
+            <button class="copy-btn" data-code="ERIDANSUNSET">Copy</button>
+          </div>
+
+          <div class="code-item">
+            <div class="code-main">
+              <strong>PROXYDAILY</strong>
+              <span>Sample reward: Denny ×12,000 · Status: Active sample</span>
+            </div>
+            <button class="copy-btn" data-code="PROXYDAILY">Copy</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="events">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Version event calendar</h2>
+          </div>
+          <p>Use this section to turn update news into useful player actions: what to do, when it ends, and why it matters.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card event">
+            <div class="event-date">May 7 - Jun 15</div>
+            <h3>Operation: Save Bootopia</h3>
+            <p>Complete event missions, increase access level, retrieve supplies, and collect limited rewards.</p>
+            <div class="progress"><span></span></div>
+            <div class="tags">
+              <span class="tag">Event</span>
+              <span class="tag">Rewards</span>
+              <span class="tag">Daily tasks</span>
+            </div>
+          </article>
+
+          <article class="card event">
+            <div class="event-date">Phase I Banner</div>
+            <h3>Promeia Channel</h3>
+            <p>Track pity, guarantee status, and available pulls before committing to the banner.</p>
+            <div class="progress"><span style="width: 48%"></span></div>
+            <div class="tags">
+              <span class="tag">S-Rank</span>
+              <span class="tag">Ice</span>
+              <span class="tag">Anomaly</span>
+            </div>
+          </article>
+
+          <article class="card event">
+            <div class="event-date">Phase I Banner</div>
+            <h3>Lucia Channel</h3>
+            <p>Compare account needs, team options, support value, and F2P pull budget.</p>
+            <div class="progress"><span style="width: 48%"></span></div>
+            <div class="tags">
+              <span class="tag">S-Rank</span>
+              <span class="tag">Ether</span>
+              <span class="tag">Support</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="characters">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Featured character builds</h2>
+          </div>
+          <p>Start with new-version characters first. New banners create the freshest search demand.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card character" data-rank="S">
+            <div class="avatar">🧊</div>
+            <h3>Promeia Build</h3>
+            <p>Ice Anomaly build template with W-Engine, Drive Disc, stats, teams, and pull advice.</p>
+            <div class="tags">
+              <span class="tag">Ice</span>
+              <span class="tag">Anomaly</span>
+              <span class="tag">Version 2.8</span>
+            </div>
+          </article>
+
+          <article class="card character" data-rank="S">
+            <div class="avatar">✨</div>
+            <h3>Lucia Build</h3>
+            <p>Ether Support build template for account value, team fit, and beginner-friendly options.</p>
+            <div class="tags">
+              <span class="tag">Ether</span>
+              <span class="tag">Support</span>
+              <span class="tag">Version 2.8</span>
+            </div>
+          </article>
+
+          <article class="card character" data-rank="A">
+            <div class="avatar">⚡</div>
+            <h3>Beginner Teams</h3>
+            <p>Simple team templates for new players who want to avoid wasting early resources.</p>
+            <div class="tags">
+              <span class="tag">F2P</span>
+              <span class="tag">Beginner</span>
+              <span class="tag">Low cost</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="planner">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>ZZZ pull planner</h2>
+          </div>
+          <p>A simple front-end calculator. No account required. No database required. Perfect for a first MVP.</p>
+        </div>
+
+        <div class="planner">
+          <div class="card">
+            <div class="form-grid">
+              <div>
+                <label for="poly">Current Polychrome</label>
+                <input id="poly" type="number" min="0" value="3200" />
+              </div>
+
+              <div>
+                <label for="tapes">Encrypted Master Tapes</label>
+                <input id="tapes" type="number" min="0" value="10" />
+              </div>
+
+              <div>
+                <label for="pity">Current pity</label>
+                <input id="pity" type="number" min="0" max="89" value="20" />
+              </div>
+
+              <div>
+                <label for="target">Target pulls</label>
+                <input id="target" type="number" min="1" value="90" />
+              </div>
+
+              <div>
+                <label for="daysLeftInput">Banner days left</label>
+                <input id="daysLeftInput" type="number" min="0" value="21" />
+              </div>
+
+              <div>
+                <label for="dailyIncome">Daily estimated pulls</label>
+                <input id="dailyIncome" type="number" min="0" step="0.1" value="0.8" />
+              </div>
+
+              <div>
+                <label for="guaranteed">Guaranteed limited?</label>
+                <select id="guaranteed">
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="goalName">Target agent</label>
+                <input id="goalName" type="text" value="Promeia" />
+              </div>
+            </div>
+
+            <button class="btn btn-primary" style="width:100%; margin-top:16px;" id="calculateBtn">Calculate Pull Plan</button>
+          </div>
+
+          <div class="result" aria-live="polite">
+            <small>Estimated available pulls before banner ends</small>
+            <div class="result-number" id="availablePulls">--</div>
+            <h3 id="plannerTitle">Calculate your plan</h3>
+            <p id="plannerText">Enter your current resources to estimate whether you can reach your target.</p>
+            <div class="reward-row" id="plannerChips">
+              <span class="chip">160 Polychrome = 1 pull</span>
+              <span class="chip">Sample estimate only</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Build roadmap</h2>
+          </div>
+          <p>Keep the first version boring, useful, and updateable. Tools first, content second.</p>
+        </div>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>What to build</th>
+              <th>Why it matters</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>P0</td>
+              <td>Codes, events, pull planner, 2 new character pages</td>
+              <td>Fastest path to fresh search demand and repeat visits.</td>
+            </tr>
+            <tr>
+              <td>P1</td>
+              <td>Material calculator, team builder, banner countdown</td>
+              <td>Turns the site from content into a real player utility.</td>
+            </tr>
+            <tr>
+              <td>P2</td>
+              <td>Account planner, share cards, multi-language pages</td>
+              <td>Creates scalable SEO pages and shareable output loops.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>FAQ</h2>
+          </div>
+          <p>Use FAQ blocks to capture long-tail questions and improve search snippet coverage.</p>
+        </div>
+
+        <div class="faq">
+          <details open>
+            <summary>What should this website focus on first?</summary>
+            <p>Focus on ZZZ codes, events, pull planning, and new-version character builds. These topics have recurring demand and clear player pain.</p>
+          </details>
+
+          <details>
+            <summary>Can this site be built without a backend?</summary>
+            <p>Yes. The first version can be pure HTML, CSS, and JavaScript. Data can be manually updated inside the page or later moved into JSON files.</p>
+          </details>
+
+          <details>
+            <summary>How can this site make money?</summary>
+            <p>The simplest path is display ads after SEO traffic starts. Later, you can add premium planning tools, no-ads mode, saved profiles, or affiliate links.</p>
+          </details>
+
+          <details>
+            <summary>What should be avoided?</summary>
+            <p>Avoid pretending to be official, using trademark-heavy domains, scraping copyrighted assets, or publishing unverified redeem codes.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <p class="disclaimer">
+        ZZZ Tools Hub is a fan-made project. Zenless Zone Zero, HoYoverse, miHoYo, and related names belong to their respective owners.
+        This page is a starter MVP template for a tools and guide website.
+      </p>
+
+      <div class="footer-links">
+        <a href="#codes">Codes</a>
+        <a href="#events">Events</a>
+        <a href="#planner">Pull Planner</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const endDate = new Date("2026-05-27T11:59:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = Math.max(0, endDate - now);
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+      document.getElementById("mins").textContent = String(mins).padStart(2, "0");
+      document.getElementById("secs").textContent = String(secs).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    document.querySelectorAll(".copy-btn").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const code = btn.dataset.code;
+        try {
+          await navigator.clipboard.writeText(code);
+          const original = btn.textContent;
+          btn.textContent = "Copied";
+          setTimeout(() => (btn.textContent = original), 1300);
+        } catch (error) {
+          alert("Copy failed. Code: " + code);
+        }
+      });
+    });
+
+    function calculatePulls() {
+      const poly = Number(document.getElementById("poly").value || 0);
+      const tapes = Number(document.getElementById("tapes").value || 0);
+      const pity = Number(document.getElementById("pity").value || 0);
+      const target = Number(document.getElementById("target").value || 90);
+      const daysLeft = Number(document.getElementById("daysLeftInput").value || 0);
+      const dailyIncome = Number(document.getElementById("dailyIncome").value || 0);
+      const guaranteed = document.getElementById("guaranteed").value;
+      const goalName = document.getElementById("goalName").value || "your target agent";
+
+      const currentPulls = Math.floor(poly / 160) + tapes;
+      const futurePulls = Math.floor(daysLeft * dailyIncome);
+      const available = currentPulls + futurePulls;
+      const pullsNeeded = Math.max(0, target - pity);
+      const gap = Math.max(0, pullsNeeded - available);
+
+      document.getElementById("availablePulls").textContent = available;
+
+      let title = "";
+      let text = "";
+
+      if (available >= pullsNeeded) {
+        title = "You are likely ready for " + goalName + ".";
+        text = "You need about " + pullsNeeded + " more pulls from current pity, and this estimate gives you around " + available + " pulls before the banner ends.";
+      } else {
+        title = "You may be short for " + goalName + ".";
+        text = "You need about " + pullsNeeded + " more pulls from current pity, but this estimate gives you around " + available + " pulls. Estimated gap: " + gap + " pulls.";
+      }
+
+      if (guaranteed === "no") {
+        text += " Since you are not guaranteed, consider planning for a second pity if you want a safer estimate.";
+      }
+
+      document.getElementById("plannerTitle").textContent = title;
+      document.getElementById("plannerText").textContent = text;
+
+      const chips = document.getElementById("plannerChips");
+      chips.innerHTML = "";
+      [
+        currentPulls + " current pulls",
+        futurePulls + " future pulls",
+        gap + " pull gap",
+        guaranteed === "yes" ? "Guaranteed" : "Not guaranteed"
+      ].forEach((item) => {
+        const span = document.createElement("span");
+        span.className = "chip";
+        span.textContent = item;
+        chips.appendChild(span);
+      });
+    }
+
+    document.getElementById("calculateBtn").addEventListener("click", calculatePulls);
+    calculatePulls();
+  </script>
+</body>
+</html>
