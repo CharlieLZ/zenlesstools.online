@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZZZ Material Calculator — Ascension & Skill Farming Planner (Zenless Zone Zero)</title>
+  <meta name="description" content="Calculate how many materials, Dennies, and stamina days you need to level up Zenless Zone Zero agents, skills, and W-Engines. Plan your farming efficiently." />
+  <meta name="keywords" content="ZZZ material calculator, zenless zone zero farming planner, zzz ascension materials, zzz skill materials, zzz dennies calculator, zzz stamina planner" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://zenlesstools.online/tools/material-calculator.html" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ZZZ Material Calculator",
+    "url": "https://zenlesstools.online/tools/material-calculator.html",
+    "description": "Estimate materials, Dennies, and stamina needed to level up Zenless Zone Zero agents, skills, and W-Engines.",
+    "applicationCategory": "GameApplication"
+  }
+  </script>
+</head>
+<body>
+  <div class="notice">Fan-made ZZZ tools hub. Not affiliated with HoYoverse, miHoYo, or Zenless Zone Zero.</div>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="/"><span class="logo-mark">ZZZ</span><span>Tools Hub</span></a>
+      <nav class="nav-links">
+        <a href="/">Home</a><a href="/codes.html">Codes</a><a href="/events.html">Events</a><a href="/banners.html">Banners</a>
+        <a href="/tools/pull-planner.html">Pull Planner</a><a href="/characters/">Builds</a>
+        <a class="nav-cta" href="/tools/pull-planner.html">Plan Pulls</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <h1>Material Calculator</h1>
+        <p>Plan your farming — see how many materials, Dennies, and days you need to level an agent</p>
+        <p class="last-updated">Last updated: May 7, 2026</p>
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+        <div class="planner">
+          <div class="mat-calc">
+            <div class="card">
+              <h3>Agent Leveling Goals</h3>
+              <div class="form-grid" style="margin-top:16px;">
+                <div>
+                  <label for="charLevel">Target Agent Level (1-60)</label>
+                  <input type="number" id="charLevel" placeholder="1" value="1" min="1" max="60" />
+                </div>
+                <div>
+                  <label for="skillLevel">Target Skill Level (Basic, Special, etc.)</label>
+                  <input type="number" id="skillLevel" placeholder="1" value="1" min="1" max="12" />
+                </div>
+                <div>
+                  <label for="wengineLevel">Target W-Engine Level (1-60)</label>
+                  <input type="number" id="wengineLevel" placeholder="1" value="1" min="1" max="60" />
+                </div>
+              </div>
+              <p style="color:var(--muted);font-size:12px;margin-top:10px;">Enter target levels to estimate mats. This is an approximation — actual amounts vary per agent.</p>
+            </div>
+
+            <div class="card" style="margin-top:16px;">
+              <h3>Farming Locations</h3>
+              <table class="table" style="margin-top:10px;">
+                <thead><tr><th>Material Type</th><th>Best Farm Source</th></tr></thead>
+                <tbody>
+                  <tr><td>Investigation Merits</td><td>HIA Combat Simulation</td></tr>
+                  <tr><td>Dennies</td><td>HIA — Denny Course</td></tr>
+                  <tr><td>Core Skill Materials</td><td>Expert Challenge (weekly)</td></tr>
+                  <tr><td>W-Engine Components</td><td>HIA — Component Course</td></tr>
+                  <tr><td>Expert Challenge Logs</td><td>Expert Challenge (weekly limit)</td></tr>
+                  <tr><td>Ascension Seals</td><td>Boss Hunts (Notorious Hunt)</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="result">
+            <small>Estimated materials needed</small>
+            <table class="table material-table" style="margin-top:14px;">
+              <thead><tr><th>Material</th><th>Qty</th></tr></thead>
+              <tbody id="matResults">
+                <tr><td>Investigation Merits</td><td>0</td></tr>
+                <tr><td>Dennies</td><td>0</td></tr>
+                <tr><td>Core Skill Materials</td><td>0</td></tr>
+                <tr><td>W-Engine Components</td><td>0</td></tr>
+                <tr><td>Expert Challenge Logs</td><td>0</td></tr>
+                <tr><td>Ascension Seals</td><td>0</td></tr>
+                <tr><td>Est. Days (180 stamina/day)</td><td>0</td></tr>
+              </tbody>
+            </table>
+            <p style="color:var(--muted);font-size:12px;margin-top:10px;">Estimates based on average drop rates. Prioritize weekly-gated materials (Expert Challenge, Notorious Hunt).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head"><div><h2>Leveling Costs Reference</h2></div></div>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Agent Ascension</h3>
+            <ul style="color:var(--muted);font-size:14px;padding-left:18px;">
+              <li>1→20: ~24k Dennies</li>
+              <li>20→30: ~56k Dennies</li>
+              <li>30→40: ~120k Dennies</li>
+              <li>40→50: ~240k Dennies</li>
+              <li>50→60: ~480k Dennies</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Skill Levels</h3>
+            <ul style="color:var(--muted);font-size:14px;padding-left:18px;">
+              <li>1→6: ~50k Dennies/skill</li>
+              <li>6→8: ~100k Dennies/skill</li>
+              <li>8→10: ~200k Dennies/skill</li>
+              <li>10→12: ~400k Dennies/skill</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>W-Engine</h3>
+            <ul style="color:var(--muted);font-size:14px;padding-left:18px;">
+              <li>1→20: ~20k Dennies</li>
+              <li>20→30: ~48k Dennies</li>
+              <li>30→40: ~100k Dennies</li>
+              <li>40→50: ~200k Dennies</li>
+              <li>50→60: ~400k Dennies</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head"><div><h2>FAQ</h2></div></div>
+        <div class="faq">
+          <details open><summary>How accurate is the material calculator?</summary><p>It provides estimates based on level-to-material ratios. Actual costs vary per agent rarity (S-Rank costs more than A-Rank). Use as a planning guide, not exact numbers.</p></details>
+          <details><summary>What should I farm first?</summary><p>Weekly-gated materials first: Expert Challenge (Core Skill mats) and Notorious Hunt (Ascension Seals). Then Dennies, then Investigation Merits, then W-Engine components.</p></details>
+          <details><summary>How long does it take to max an agent?</summary><p>From level 1 to 60 with all skills at 10, typically 2-3 weeks of dedicated farming (assuming 180 stamina/day + weekly boss mats).</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><p class="disclaimer"><strong>Fan-made project.</strong> Not affiliated with HoYoverse, miHoYo, or Zenless Zone Zero.</p><p class="last-updated">Last updated: May 7, 2026</p></div>
+      <div class="footer-links"><a href="/">Home</a><a href="/codes.html">Codes</a><a href="/events.html">Events</a><a href="/tools/pull-planner.html">Pull Planner</a><a href="/characters/">Builds</a></div>
+    </div>
+  </footer>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

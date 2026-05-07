@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZZZ Pull Planner — Calculate Polychrome, Pity & Banner Goals (Zenless Zone Zero)</title>
+  <meta name="description" content="Plan your Zenless Zone Zero pulls. Enter your Polychrome, Encrypted Master Tapes, pity count, and daily income to see if you can reach your banner target before it ends." />
+  <meta name="keywords" content="ZZZ pull planner, zenless zone zero pull calculator, zzz pity calculator, zzz polychrome planner, zzz banner goal calculator" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://zenlesstools.online/tools/pull-planner.html" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ZZZ Pull Planner",
+    "url": "https://zenlesstools.online/tools/pull-planner.html",
+    "description": "Estimate whether your Polychrome, Encrypted Master Tapes, and pity can reach your banner target before the banner ends.",
+    "applicationCategory": "GameApplication"
+  }
+  </script>
+</head>
+<body>
+  <div class="notice">Fan-made ZZZ tools hub. Not affiliated with HoYoverse, miHoYo, or Zenless Zone Zero.</div>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="/"><span class="logo-mark">ZZZ</span><span>Tools Hub</span></a>
+      <nav class="nav-links">
+        <a href="/">Home</a><a href="/codes.html">Codes</a><a href="/events.html">Events</a><a href="/banners.html">Banners</a>
+        <a class="active" href="/tools/pull-planner.html">Pull Planner</a><a href="/characters/">Builds</a>
+        <a class="nav-cta" href="/tools/pull-planner.html">Plan Pulls</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <h1>ZZZ Pull Planner</h1>
+        <p>See if your Polychrome savings can reach your banner goal before it ends</p>
+        <p class="last-updated">Last updated: May 7, 2026</p>
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+        <div class="planner">
+          <div>
+            <div class="card">
+              <h3>Your Resources</h3>
+              <div class="form-grid" style="margin-top:16px;">
+                <div>
+                  <label for="poly">Polychrome</label>
+                  <input type="number" id="poly" placeholder="0" value="0" min="0" />
+                </div>
+                <div>
+                  <label for="tapes">Encrypted Master Tapes</label>
+                  <input type="number" id="tapes" placeholder="0" value="0" min="0" />
+                </div>
+                <div>
+                  <label for="pity">Current Pity</label>
+                  <input type="number" id="pity" placeholder="0" value="0" min="0" max="89" />
+                </div>
+                <div>
+                  <label for="target">Target Pity (default 90)</label>
+                  <input type="number" id="target" placeholder="90" value="90" min="1" max="90" />
+                </div>
+                <div>
+                  <label for="goalName">Goal Name</label>
+                  <input type="text" id="goalName" placeholder="e.g. Promeia" value="Promeia" />
+                </div>
+                <div>
+                  <label for="guaranteed">Guaranteed?</label>
+                  <select id="guaranteed">
+                    <option value="no">No — 50/50</option>
+                    <option value="yes">Yes — Guaranteed</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="margin-top:16px;">
+              <h3>Daily Income Estimate</h3>
+              <div class="form-grid" style="margin-top:16px;">
+                <div>
+                  <label for="daysLeftInput">Days Until Banner Ends</label>
+                  <input type="number" id="daysLeftInput" placeholder="20" value="20" min="1" />
+                </div>
+                <div>
+                  <label for="dailyIncome">Pulls Per Day (avg)</label>
+                  <input type="number" id="dailyIncome" placeholder="0.8" value="0.8" min="0" step="0.1" />
+                </div>
+              </div>
+              <p style="color:var(--muted);font-size:12px;margin-top:10px;">F2P ~0.5 pulls/day. Monthly pass + BP ~0.8. Events add 10-20 bonus pulls per version.</p>
+              <button class="btn btn-primary" id="calculateBtn" style="width:100%;margin-top:12px;">Calculate</button>
+            </div>
+          </div>
+
+          <div class="result">
+            <small>Available pulls</small>
+            <div class="result-number" id="availablePulls">0</div>
+            <h3 id="plannerTitle">Enter your resources</h3>
+            <p style="color:var(--muted);font-size:14px;" id="plannerText">Fill in the form on the left to see if you can reach your goal.</p>
+            <div class="reward-row" id="plannerChips" style="margin-top:14px;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head"><div><h2>How Pity Works</h2></div></div>
+        <table class="table">
+          <thead><tr><th>Mechanic</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Soft Pity</td><td>From pull 75, 5★ drop rate increases sharply</td></tr>
+            <tr><td>Hard Pity</td><td>Pull 90 guarantees a 5★</td></tr>
+            <tr><td>50/50</td><td>First 5★ on limited banner: 50% chance featured agent</td></tr>
+            <tr><td>Guarantee</td><td>If your last 5★ was not featured, the next is guaranteed featured</td></tr>
+            <tr><td>Carry-over</td><td>Pity count carries between same-type limited banners</td></tr>
+            <tr><td>Cost</td><td>160 Polychrome = 1 pull. 1 Encrypted Master Tape = 1 pull.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head"><div><h2>Poly Income Sources</h2></div></div>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Daily Sources</h3>
+            <ul style="color:var(--muted);font-size:14px;padding-left:18px;">
+              <li>Daily Commissions: 60 Poly</li>
+              <li>Monthly Pass: 90 Poly/day</li>
+              <li>Video Store: ~20-40 Poly/day</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Weekly Sources</h3>
+            <ul style="color:var(--muted);font-size:14px;padding-left:18px;">
+              <li>Hollow Zero: ~160 Poly</li>
+              <li>Shiyu Defense: up to 720 Poly</li>
+              <li>Weekly Bosses: materials only</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>One-time Sources</h3>
+            <ul style="color:var(--muted);font-size:14px;padding-left:18px;">
+              <li>Events: 500-1500+ Poly</li>
+              <li>Story missions: variable</li>
+              <li>Achievements: 5-20 Poly each</li>
+              <li>Livestream codes: 300 Poly</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head"><div><h2>FAQ</h2></div></div>
+        <div class="faq">
+          <details open><summary>How accurate is the pull planner?</summary><p>It's an estimate based on the numbers you enter. Daily income varies with events and your playtime. Use conservative estimates and add a 10-20 pull buffer for safety.</p></details>
+          <details><summary>What's a good daily pull estimate?</summary><p>Pure F2P: ~0.5 pulls/day. With monthly pass: ~0.7. Monthly pass + Battle Pass: ~0.8-1.0. Events typically add 10-20 bonus pulls per version.</p></details>
+          <details><summary>Should I plan for 75 or 90 pity?</summary><p>Plan for 80-85 to be safe. Most 5★ drops happen between 75-80 pulls due to soft pity. Planning for 90 is the safest worst-case scenario.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><p class="disclaimer"><strong>Fan-made project.</strong> Not affiliated with HoYoverse, miHoYo, or Zenless Zone Zero.</p><p class="last-updated">Last updated: May 7, 2026</p></div>
+      <div class="footer-links"><a href="/">Home</a><a href="/codes.html">Codes</a><a href="/events.html">Events</a><a href="/tools/pull-planner.html">Pull Planner</a><a href="/characters/">Builds</a></div>
+    </div>
+  </footer>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

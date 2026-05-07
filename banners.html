@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZZZ Banner Countdown — Zenless Zone Zero Limited Banner Timer 2026</title>
+  <meta name="description" content="Live countdown timer for Zenless Zone Zero limited banners. Track current Phase I Promeia & Lucia banners and upcoming Phase II. Never miss a banner deadline." />
+  <meta name="keywords" content="ZZZ banner countdown, zzz banner timer, zenless zone zero banner schedule, zzz 2.8 banner, promeia banner, lucia banner" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://zenlesstools.online/banners.html" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="notice">Fan-made ZZZ tools hub. Not affiliated with HoYoverse, miHoYo, or Zenless Zone Zero.</div>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="/"><span class="logo-mark">ZZZ</span><span>Tools Hub</span></a>
+      <nav class="nav-links">
+        <a href="/">Home</a><a href="/codes.html">Codes</a><a href="/events.html">Events</a>
+        <a class="active" href="/banners.html">Banners</a>
+        <a href="/tools/pull-planner.html">Pull Planner</a><a href="/characters/">Builds</a>
+        <a class="nav-cta" href="/tools/pull-planner.html">Plan Pulls</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <div class="eyebrow"><span class="pulse"></span> Version 2.8 — Eridan Sunset</div>
+        <h1>ZZZ Banner Countdown</h1>
+        <p>Live countdown timers for current and upcoming Zenless Zone Zero limited banners</p>
+        <p class="last-updated">Last updated: May 7, 2026</p>
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+        <div class="section-head"><div><h2>Phase I — Now Live</h2></div></div>
+        <div class="grid-2">
+          <div class="hero-card">
+            <span class="version-badge">LIVE</span>
+            <h2>Promeia (Ice · Anomaly)</h2>
+            <p>S-Rank debut banner. Rate-up for Promeia with featured A-Ranks.</p>
+            <div class="countdown" id="promeiaCountdown"></div>
+            <div class="reward-row">
+              <span class="chip">S-Rank</span><span class="chip tag tag-cyan">Ice</span><span class="chip">Anomaly</span>
+            </div>
+          </div>
+          <div class="hero-card">
+            <span class="version-badge">LIVE</span>
+            <h2>Lucia (Ether · Support)</h2>
+            <p>S-Rank debut banner. Rate-up for Lucia with featured A-Ranks.</p>
+            <div class="countdown" id="luciaCountdown"></div>
+            <div class="reward-row">
+              <span class="chip">S-Rank</span><span class="chip tag tag-cyan">Ether</span><span class="chip">Support</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head"><div><h2>Phase II — Coming Soon</h2></div></div>
+        <div class="card" style="text-align:center; padding:32px;">
+          <h3>Rerun Banners</h3>
+          <p style="color:var(--muted);">Phase II will feature rerun banners for previous limited S-Rank agents. Awaiting official announcement from HoYoverse.</p>
+          <p class="last-updated">Expected: Late May 2026</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head"><div><h2>Banner Mechanics</h2></div></div>
+        <table class="table">
+          <thead><tr><th>Mechanic</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Soft Pity</td><td>75 pulls — increased 5★ drop rate</td></tr>
+            <tr><td>Hard Pity</td><td>90 pulls — guaranteed 5★</td></tr>
+            <tr><td>50/50</td><td>First 5★ on limited banner: 50% chance featured agent</td></tr>
+            <tr><td>Guarantee</td><td>If last 5★ was not featured, next 5★ is guaranteed featured</td></tr>
+            <tr><td>Pity Carry-over</td><td>Pity count carries between same-type limited banners</td></tr>
+            <tr><td>Cost per Pull</td><td>160 Polychrome or 1 Encrypted Master Tape</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><p class="disclaimer"><strong>Fan-made project.</strong> Not affiliated with HoYoverse, miHoYo, or Zenless Zone Zero.</p><p class="last-updated">Last updated: May 7, 2026</p></div>
+      <div class="footer-links"><a href="/">Home</a><a href="/codes.html">Codes</a><a href="/events.html">Events</a><a href="/tools/pull-planner.html">Pull Planner</a><a href="/characters/">Builds</a></div>
+    </div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+  <script>
+    initCountdown("promeiaCountdown", "2026-05-27T11:59:00", "Promeia");
+    initCountdown("luciaCountdown", "2026-05-27T11:59:00", "Lucia");
+  </script>
+</body>
+</html>
