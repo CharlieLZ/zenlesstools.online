@@ -20,6 +20,7 @@ class HeadParser(HTMLParser):
         super().__init__()
         self.canonicals: list[str] = []
         self.robots: list[str] = []
+        self.links: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attributes = {name.lower(): value or "" for name, value in attrs}
@@ -27,18 +28,27 @@ class HeadParser(HTMLParser):
             self.canonicals.append(attributes.get("href", "").strip())
         if tag.lower() == "meta" and attributes.get("name", "").lower() == "robots":
             self.robots.append(attributes.get("content", "").strip().lower())
+        if tag.lower() == "a":
+            self.links.append(attributes.get("href", "").strip())
 
 
 def url_to_file(url: str) -> Path | None:
     parsed = urlparse(url)
-    if f"{parsed.scheme}://{parsed.netloc}" != ORIGIN or parsed.query or parsed.fragment:
+    if (
+        f"{parsed.scheme}://{parsed.netloc}" != ORIGIN
+        or parsed.query
+        or parsed.fragment
+        or parsed.path.endswith(".html")
+    ):
         return None
     relative = parsed.path.lstrip("/")
     if not relative:
-        relative = "index.html"
+        candidates = [ROOT / "index.html"]
     elif relative.endswith("/"):
-        relative += "index.html"
-    return ROOT / relative
+        candidates = [ROOT / relative / "index.html"]
+    else:
+        candidates = [ROOT / f"{relative}.html", ROOT / relative / "index.html"]
+    return next((candidate for candidate in candidates if candidate.is_file()), candidates[0])
 
 
 def main() -> int:
@@ -87,6 +97,15 @@ def main() -> int:
             errors.append(f"{target.relative_to(ROOT)} canonical mismatch: {parser.canonicals!r}")
         if any("noindex" in value for value in parser.robots):
             errors.append(f"{target.relative_to(ROOT)} is noindex but appears in sitemap")
+        redirected_links = [
+            href
+            for href in parser.links
+            if href.startswith("/") and urlparse(href).path.endswith(".html")
+        ]
+        if redirected_links:
+            errors.append(
+                f"{target.relative_to(ROOT)} contains redirecting .html links: {redirected_links!r}"
+            )
 
     if errors:
         print("Sitemap verification failed:", file=sys.stderr)
