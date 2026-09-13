@@ -28,30 +28,87 @@ function initCopyButtons() {
   });
 }
 
-// Countdown handler
+// Countdown deadlines must include a verified UTC offset, never browser-local time.
+function getCountdownState(endDateStr, now = Date.now()) {
+  if (endDateStr == null || endDateStr === "") return { state: "unknown" };
+  const parts = typeof endDateStr === "string" && endDateStr.match(
+    /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d{1,3})?(Z|[+-]\d{2}:\d{2})$/
+  );
+  if (!parts || !Number.isFinite(now)) return { state: "invalid" };
+  const [, year, month, day, hour, minute, second, zone] = parts;
+  const leapYear = +year % 4 === 0 && (+year % 100 !== 0 || +year % 400 === 0);
+  const daysInMonth = [31, leapYear ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  const offsetHours = zone === "Z" ? 0 : +zone.slice(1, 3);
+  const offsetMinutes = zone === "Z" ? 0 : +zone.slice(4, 6);
+  if (+month < 1 || +month > 12 || +day < 1 || +day > daysInMonth[+month - 1] ||
+      +hour > 23 || +minute > 59 || +second > 59 || offsetHours > 14 ||
+      offsetMinutes > 59 || (offsetHours === 14 && offsetMinutes !== 0) || zone === "-00:00") {
+    return { state: "invalid" };
+  }
+  const deadline = Date.parse(endDateStr);
+  if (!Number.isFinite(deadline)) return { state: "invalid" };
+  const remainingMs = Math.max(0, deadline - now);
+  return {
+    state: remainingMs === 0 ? "ended" : "counting",
+    // Keep one second visible until the actual deadline, including fractional seconds.
+    remainingSeconds: Math.ceil(remainingMs / 1000)
+  };
+}
+
+const countdownTimers = new WeakMap();
+
 function initCountdown(elementId, endDateStr, label) {
-  const endDate = new Date(endDateStr);
+  const el = document.getElementById(elementId);
+  if (!el) return;
+  const previousTimer = countdownTimers.get(el);
+  if (previousTimer !== undefined) clearInterval(previousTimer);
+  countdownTimers.delete(el);
+  el.setAttribute("role", "timer");
+  // A ticking countdown should be readable on demand without announcing every second.
+  el.setAttribute("aria-live", "off");
+
+  function stop() {
+    const timer = countdownTimers.get(el);
+    if (timer !== undefined) clearInterval(timer);
+    countdownTimers.delete(el);
+  }
+
   function update() {
-    const diff = Math.max(0, endDate - new Date());
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    const el = document.getElementById(elementId);
-    if (!el) return;
-    if (diff === 0) {
-      el.innerHTML = label ? `<span>${label} ended</span>` : "<span>Ended</span>";
-      return;
+    if (document.getElementById(elementId) !== el) {
+      stop();
+      return false;
     }
+    const result = getCountdownState(endDateStr);
+    el.dataset.state = result.state;
+    if (result.state !== "counting") {
+      const message = result.state === "ended"
+        ? (label ? `${label} ended` : "Ended")
+        : result.state === "unknown"
+          ? "Schedule unverified — check the official notice."
+          : "Countdown unavailable — deadline or timezone is invalid or unverified.";
+      const text = document.createElement("span");
+      text.style.gridColumn = "1 / -1";
+      text.textContent = message;
+      el.replaceChildren(text);
+      el.setAttribute("aria-label", message);
+      stop();
+      return false;
+    }
+    const total = result.remainingSeconds;
+    const d = Math.floor(total / 86400);
+    const h = Math.floor((total % 86400) / 3600);
+    const m = Math.floor((total % 3600) / 60);
+    const s = total % 60;
+    el.setAttribute("aria-label", `${label ? label + ": " : ""}${d} days, ${h} hours, ${m} minutes, ${s} seconds remaining`);
     el.innerHTML = `
       <div class="time-box"><strong>${d}</strong><span>Days</span></div>
       <div class="time-box"><strong>${String(h).padStart(2,"0")}</strong><span>Hours</span></div>
       <div class="time-box"><strong>${String(m).padStart(2,"0")}</strong><span>Mins</span></div>
       <div class="time-box"><strong>${String(s).padStart(2,"0")}</strong><span>Secs</span></div>
     `;
+    return true;
   }
-  update();
-  setInterval(update, 1000);
+  if (update()) countdownTimers.set(el, setInterval(update, 1000));
 }
 
 // Pull planner calculator

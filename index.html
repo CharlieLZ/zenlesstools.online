@@ -87,7 +87,7 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow"><span class="pulse"></span> Version 2.8 — Eridan Sunset</div>
+          <div class="eyebrow">Version 3.2 — Their Secret Histories</div>
           <h1>
             Zenless Zone Zero
             <span class="gradient-text">codes, events &amp; pull planning</span>
@@ -103,20 +103,21 @@
           </div>
           <div class="quick-stats">
             <div class="stat"><strong>11</strong><span>Player tools</span></div>
-            <div class="stat"><strong>2.8</strong><span>Current version</span></div>
+            <div class="stat"><strong>3.2</strong><span>Current version</span></div>
             <div class="stat"><strong>Free</strong><span>Fan-made hub</span></div>
           </div>
         </div>
-        <aside class="hero-card" aria-label="Current version highlight">
-          <span class="version-badge">LIVE</span>
-          <h2>Eridan Sunset</h2>
-          <p>Check current events, banner timing, new agents Promeia &amp; Lucia, rewards, and daily tasks.</p>
-          <div class="countdown" aria-label="Banner countdown" id="homeCountdown"></div>
+        <aside class="hero-card" aria-label="Banner schedule reference">
+          <span class="version-badge">OFFICIAL SCHEDULE · TIMEZONE UNVERIFIED</span>
+          <h2>Version 3.2 — Phase I banners</h2>
+          <p>Claret and Nangong Yu limited banners, per the official September 7 notice. Confirm your server's deadline in-game before planning pulls.</p>
+          <div class="countdown" aria-label="Banner schedule" id="homeCountdown"><span style="grid-column:1 / -1;">Schedule unverified — check the official notice.</span></div>
           <div class="reward-row">
-            <span class="chip">Promeia</span>
-            <span class="chip">Lucia</span>
-            <span class="chip">Event Rewards</span>
-            <span class="chip">Check-in Pulls</span>
+            <span class="chip">Claret</span>
+            <span class="chip">Nangong Yu</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="/banners">Banner schedule &amp; official notices</a>
           </div>
         </aside>
       </div>
@@ -148,7 +149,7 @@
             <div class="icon">👥</div><h3>Team Builder</h3><p>Build teams by element, role, and synergy. Budget and premium options.</p>
           </a>
           <a class="card" href="/banners">
-            <div class="icon">⏱️</div><h3>Banner Countdown</h3><p>Track current and upcoming limited banners with live countdown timers.</p>
+            <div class="icon">⏱️</div><h3>Banner Countdown</h3><p>Track current and upcoming limited banners and their official schedule.</p>
           </a>
           <a class="card" href="/daily-checklist">
             <div class="icon">✅</div><h3>Daily Checklist</h3><p>Today's tasks: codes, events, farming, and banner reminders in one view.</p>
@@ -222,6 +223,6 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
-  <script>initCountdown("homeCountdown", "2026-05-27T11:59:00", "Phase I Banner");</script>
+  <script>initCountdown("homeCountdown", "", "Version 3.2 Phase I banner");</script>
 </body>
 </html>
