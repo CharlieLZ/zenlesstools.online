@@ -1,9 +1,9 @@
 name: Site integrity
 
+# 手动触发（workflow_dispatch）——本仓 CI 只在本地跑，不在 GitHub 跑（省 Actions 额度）。
+# 本地等价：python3 scripts/verify_sitemap.py。
 on:
-  pull_request:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
