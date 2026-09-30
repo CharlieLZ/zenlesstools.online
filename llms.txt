@@ -1,0 +1,30 @@
+# ZZZ Tools Hub
+
+> A free, fan-made toolkit for Zenless Zone Zero (ZZZ) players: redeem codes, event calendar, banner schedule, pull planner, material calculator, character builds, tier list, W-Engine and Drive Disc references, and a daily checklist.
+
+ZZZ Tools Hub is an unofficial fan project and is not affiliated with, endorsed by, or sponsored by HoYoverse, miHoYo, or Zenless Zone Zero. All game names, assets and trademarks belong to their respective owners.
+
+Every tool runs in the browser and is free: no account, no login and no payment. Data you enter (checklist progress, planner numbers) stays in your browser.
+
+Planner results are front-end estimates calculated from the numbers you type in, not official game values. Banner dates are a dated reference to official notices, and the site does not guess your server timezone — confirm your deadline in-game under Signal Search → Details.
+
+## Core pages
+- [ZZZ Tools Hub](https://zenlesstools.online/): the home page — what the site covers and links to every tool.
+- [ZZZ Redeem Codes](https://zenlesstools.online/codes): active and recently expired ZZZ codes with rewards, copy buttons and redemption steps.
+- [ZZZ Event Calendar](https://zenlesstools.online/events): current and upcoming events with dates, requirements, rewards and daily priorities.
+- [ZZZ Banner Countdown](https://zenlesstools.online/banners): the current limited-banner schedule with pull-planning notes and official notice links.
+- [Daily Checklist](https://zenlesstools.online/daily-checklist): daily, weekly and event tasks with progress saved in your browser.
+
+## Tools
+- [ZZZ Pull Planner](https://zenlesstools.online/tools/pull-planner): enter Polychrome, Encrypted Master Tapes, pity and a banner goal to see whether you can reach it.
+- [ZZZ Material Calculator](https://zenlesstools.online/tools/material-calculator): estimate materials, Dennies and farming days needed to level agents, skills and W-Engines.
+- [ZZZ Team Builder](https://zenlesstools.online/tools/team-builder): compose teams by element, role and synergy, with archetypes and meta team examples.
+
+## Guides
+- [ZZZ Character Builds](https://zenlesstools.online/characters/): build-guide index with team templates and the build template explained.
+- [Promeia Build Guide](https://zenlesstools.online/characters/promeia-build): best W-Engine, Drive Discs, stats, teams and pull value for the Ice Anomaly agent.
+- [Lucia Build Guide](https://zenlesstools.online/characters/lucia-build): best W-Engine, Drive Discs, stats, teams and support value for the Ether Support agent.
+- [ZZZ Agent Tier List](https://zenlesstools.online/tier-list): agent rankings by role — DPS, Stun, Support, Anomaly and Defense — with team-fit notes.
+- [ZZZ W-Engines Database](https://zenlesstools.online/w-engines): every W-Engine with stats, passive effects and best character matches.
+- [ZZZ Drive Discs Guide](https://zenlesstools.online/drive-discs): all Drive Disc sets with 2-piece/4-piece effects, main-stat options and farm spots.
+- [ZZZ Bangboo Guide](https://zenlesstools.online/bangboo): Bangboo tier list, skills, element synergy and how to choose one.

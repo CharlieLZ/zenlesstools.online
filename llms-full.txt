@@ -1,0 +1,114 @@
+# ZZZ Tools Hub
+
+> A free, fan-made toolkit for Zenless Zone Zero (ZZZ) players: redeem codes, event calendar, banner schedule, pull planner, material calculator, character builds, tier list, W-Engine and Drive Disc references, and a daily checklist.
+
+- Site: https://zenlesstools.online/
+- Audience: Zenless Zone Zero players who want one hub for codes, events, banners, builds and resource planning.
+- Price: free. No account, no login, no payment.
+- Language: English.
+- Nature: unofficial fan project. Not affiliated with, endorsed by, or sponsored by HoYoverse, miHoYo, or Zenless Zone Zero. Game names, assets and trademarks belong to their respective owners.
+
+## What this site is
+
+ZZZ Tools Hub collects the recurring things Zenless Zone Zero players look up every day — redeem codes, event and banner schedules, character builds, tier rankings, W-Engines, Drive Discs, Bangboo — into one set of pages, and adds three planners: a pull planner, a material calculator and a team builder.
+
+Everything runs in the browser. Checklist progress and planner inputs stay on your device; the site does not ask for an account and has no checkout.
+
+Two kinds of numbers appear on the site, and both are labelled in place:
+
+- **Game mechanics** (pity thresholds, pull cost, income sources) are described as general rules and linked back to the page that explains them.
+- **Planner output** is a front-end estimate calculated from the numbers you type in, not an official game value. The pull planner and material calculator both say so on the page.
+
+## Pages
+
+### Home — https://zenlesstools.online/
+Overview of the hub, the current banner reference, a short FAQ (official status, code redemption, pity rules, update cadence, pricing) and links into every tool and guide.
+
+### Codes — https://zenlesstools.online/codes
+Active and recently expired ZZZ redeem codes with rewards, one-click copy buttons and redemption steps. The page states that codes are checked after each version update, livestream and official announcement, and that it updates within 24 hours of new codes dropping. It also notes that a code that does not work may have expired, be region-locked, or already be redeemed on your account.
+
+Redeeming: in-game, open the menu → Settings (gear icon) → Account → Redeem Code. Codes can also be redeemed on the official HoYoverse gift site.
+
+### Events — https://zenlesstools.online/events
+Current and upcoming events with their dates, requirements, rewards and daily priorities, plus a banner schedule section and a daily priority guide.
+
+### Banners — https://zenlesstools.online/banners
+A dated reference to the current limited-banner schedule, with the source of the official notice and the date it was checked. The page deliberately does not convert the notice into a live countdown: it states that a server UTC offset has not been verified, shows the countdown as paused, and tells readers to confirm their deadline in-game under Signal Search → Details. It is a dated schedule reference, not a live availability check.
+
+### Daily checklist — https://zenlesstools.online/daily-checklist
+Daily, weekly and event tasks in one list, with progress saved in your browser. Daily items include daily commissions, spending stamina, video store income, checking for new codes and the scratch card. Weekly items include the weekly bosses, Expert Challenge, the Hollow Zero weekly bounty and Shiyu Defense progress. Event items cover the active event's daily progress and login campaign rewards.
+
+## Tools
+
+### Pull planner — https://zenlesstools.online/tools/pull-planner
+Enter your Polychrome, Encrypted Master Tapes, current pity, target pity, goal name, guarantee status, days until the banner ends and an average pulls-per-day estimate. The page then estimates whether you can reach the goal.
+
+The mechanics it explains:
+
+- Soft pity: from pull 75 the 5-star drop rate increases sharply.
+- Hard pity: pull 90 guarantees a 5-star.
+- 50/50: the first 5-star on a limited banner is a 50% chance of the featured agent.
+- Guarantee: if your last 5-star was not the featured agent, the next one is guaranteed to be featured.
+- Carry-over: the pity count carries between same-type limited banners.
+- Cost: 160 Polychrome = 1 pull; 1 Encrypted Master Tape = 1 pull.
+
+Income references on the page: daily commissions 60 Polychrome, monthly pass 90 Polychrome per day, video store roughly 20–40 Polychrome per day; Hollow Zero roughly 160 Polychrome per week, Shiyu Defense up to 720 Polychrome; events 500–1500+ Polychrome, livestream codes 300 Polychrome. Its FAQ suggests planning for 80–85 pulls as a safe target and using a 10–20 pull buffer, and gives rough daily pull rates for free-to-play and monthly-pass players.
+
+### Material calculator — https://zenlesstools.online/tools/material-calculator
+Enter target agent level, target skill level and target W-Engine level to estimate investigation merits, Dennies, core skill materials, W-Engine components, logs and ascension seals, plus the stamina days they imply. The page states clearly that this is an approximation and that actual amounts vary per agent. It also lists where each material type is farmed (HIA courses, weekly Expert Challenge, Notorious Hunt boss hunts).
+
+### Team builder — https://zenlesstools.online/tools/team-builder
+Compose teams by element, role and synergy. The page explains three archetypes — hypercarry (main DPS plus stun plus support), anomaly/disorder (two anomaly agents of different elements plus a flex slot) and mono element — and gives meta team examples with role and element notes.
+
+## Guides
+
+### Character builds — https://zenlesstools.online/characters/
+Index of build guides with team templates and an explanation of the build template (W-Engine, Drive Discs, main and sub stats, team comps, pull value).
+
+- [Promeia Build Guide](https://zenlesstools.online/characters/promeia-build): Ice Anomaly agent focused on freeze application and shatter damage; covers skill priority, best W-Engines, Drive Discs, teams and pull value.
+- [Lucia Build Guide](https://zenlesstools.online/characters/lucia-build): Ether Support agent providing team-wide buffs, energy regeneration and healing; covers skill priority, best W-Engines, Drive Discs, teams and pull value.
+
+### Tier list — https://zenlesstools.online/tier-list
+Agent rankings separated by role — DPS, Stun, Support, Anomaly and Defense — with each agent's element and a short note on where it fits.
+
+### W-Engines — https://zenlesstools.online/w-engines
+W-Engines grouped by type (Anomaly, Support, Stun, Attack) with rarity, source (signature, premium, battle pass, craftable), stats, passive effects and best-character matches.
+
+### Drive Discs — https://zenlesstools.online/drive-discs
+How Drive Discs work — six slots, fixed main stats on slots 1–3 and variable main stats on slots 4–6, two-piece and four-piece set bonuses, and up to four sub stats that upgrade every three levels — plus every set's effects, recommended stats and farming locations.
+
+### Bangboo — https://zenlesstools.online/bangboo
+What Bangboo are (AI companions with passive bonuses and automatic chain-attack skills), a tier list, an element breakdown, how to choose one for a team and how to obtain them.
+
+## Frequently asked questions
+
+- **Is this an official ZZZ site?** No. It is a fan-made project, not affiliated with or endorsed by HoYoverse.
+- **How do I redeem codes?** In-game: menu → Settings → Account → Redeem Code. Or via the official HoYoverse gift site.
+- **How does pity work?** Soft pity from pull 75, hard pity at 90, a 50/50 on the first limited 5-star, and a guarantee on the next if the last 5-star was not featured. The count carries between same-type limited banners.
+- **How often are codes updated?** After version updates, livestreams and announcements; the codes page carries a last-updated timestamp.
+- **Is the site free?** Yes. All tools are free, with no login, account or payment.
+
+## Policies
+
+- Unofficial fan project; not affiliated with, endorsed by, or sponsored by HoYoverse, miHoYo, or Zenless Zone Zero.
+- Free to use; no accounts and no payments.
+- Planner output is an estimate, not official data. Banner dates come from dated official notices and are not converted to a live countdown because the site does not verify server timezones.
+
+## Links
+
+- Home: https://zenlesstools.online/
+- Codes: https://zenlesstools.online/codes
+- Events: https://zenlesstools.online/events
+- Banners: https://zenlesstools.online/banners
+- Daily checklist: https://zenlesstools.online/daily-checklist
+- Pull planner: https://zenlesstools.online/tools/pull-planner
+- Material calculator: https://zenlesstools.online/tools/material-calculator
+- Team builder: https://zenlesstools.online/tools/team-builder
+- Character builds: https://zenlesstools.online/characters/
+- Promeia build: https://zenlesstools.online/characters/promeia-build
+- Lucia build: https://zenlesstools.online/characters/lucia-build
+- Tier list: https://zenlesstools.online/tier-list
+- W-Engines: https://zenlesstools.online/w-engines
+- Drive Discs: https://zenlesstools.online/drive-discs
+- Bangboo: https://zenlesstools.online/bangboo
+- Sitemap: https://zenlesstools.online/sitemap.xml
