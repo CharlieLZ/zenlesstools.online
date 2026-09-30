@@ -10,7 +10,7 @@
 
 ## What this site is
 
-ZZZ Tools Hub collects the recurring things Zenless Zone Zero players look up every day — redeem codes, event and banner schedules, character builds, tier rankings, W-Engines, Drive Discs, Bangboo — into one set of pages, and adds three planners: a pull planner, a material calculator and a team builder.
+ZZZ Tools Hub collects the recurring things Zenless Zone Zero players look up every day — redeem codes, event and banner schedules, character builds, tier rankings, W-Engines, Drive Discs, Bangboo — into one set of pages, and adds three helper tools: a pull planner, a material calculator and a team-building guide.
 
 Everything runs in the browser. Checklist progress and planner inputs stay on your device; the site does not ask for an account and has no checkout.
 
@@ -58,7 +58,7 @@ Income references on the page: daily commissions 60 Polychrome, monthly pass 90 
 Enter target agent level, target skill level and target W-Engine level to estimate investigation merits, Dennies, core skill materials, W-Engine components, logs and ascension seals, plus the stamina days they imply. The page states clearly that this is an approximation and that actual amounts vary per agent. It also lists where each material type is farmed (HIA courses, weekly Expert Challenge, Notorious Hunt boss hunts).
 
 ### Team builder — https://zenlesstools.online/tools/team-builder
-Compose teams by element, role and synergy. The page explains three archetypes — hypercarry (main DPS plus stun plus support), anomaly/disorder (two anomaly agents of different elements plus a flex slot) and mono element — and gives meta team examples with role and element notes.
+A written team-building guide rather than an interactive tool: it explains three archetypes — hypercarry (main DPS plus stun plus support), anomaly/disorder (two anomaly agents of different elements plus a flex slot) and mono element — and gives example compositions with role and element notes, plus a role-synergy and element-pairing reference.
 
 ## Guides
 
@@ -72,10 +72,10 @@ Index of build guides with team templates and an explanation of the build templa
 Agent rankings separated by role — DPS, Stun, Support, Anomaly and Defense — with each agent's element and a short note on where it fits.
 
 ### W-Engines — https://zenlesstools.online/w-engines
-W-Engines grouped by type (Anomaly, Support, Stun, Attack) with rarity, source (signature, premium, battle pass, craftable), stats, passive effects and best-character matches.
+W-Engines grouped by type (Anomaly, Support, Stun, Attack) with rarity, source (signature, premium, battle pass, craftable), passive-effect notes and best-character matches.
 
 ### Drive Discs — https://zenlesstools.online/drive-discs
-How Drive Discs work — six slots, fixed main stats on slots 1–3 and variable main stats on slots 4–6, two-piece and four-piece set bonuses, and up to four sub stats that upgrade every three levels — plus every set's effects, recommended stats and farming locations.
+How Drive Discs work — six slots, fixed main stats on slots 1–3 and variable main stats on slots 4–6, two-piece and four-piece set bonuses, and up to four sub stats that upgrade every three levels — plus every set's 2-piece and 4-piece effects, a main-stat table and a quick set picker.
 
 ### Bangboo — https://zenlesstools.online/bangboo
 What Bangboo are (AI companions with passive bonuses and automatic chain-attack skills), a tier list, an element breakdown, how to choose one for a team and how to obtain them.
