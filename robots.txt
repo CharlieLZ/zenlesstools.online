@@ -1,4 +1,66 @@
+# robots.txt for zenlesstools.online (ZZZ Tools Hub)
+# Public pages, assets and structured data are open to search and AI answer
+# engines. The named AI group repeats the "*" rules because RFC 9309 named
+# groups do not inherit them.
+
 User-agent: *
 Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /cdn-cgi/
+
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: anthropic-ai
+User-agent: Claude-Web
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: GoogleOther
+User-agent: Google-CloudVertexBot
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: Meta-ExternalAgent
+User-agent: Meta-ExternalFetcher
+User-agent: Meta-WebIndexer
+User-agent: FacebookBot
+User-agent: Amazonbot
+User-agent: CCBot
+User-agent: Bytespider
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+User-agent: cohere-ai
+User-agent: cohere-training-data-crawler
+User-agent: YouBot
+User-agent: AI2Bot
+User-agent: Diffbot
+User-agent: Timpibot
+User-agent: omgili
+User-agent: Gemini-Deep-Research
+User-agent: Google-NotebookLM
+User-agent: GoogleAgent-URLContext
+User-agent: DeepSeekBot
+User-agent: ChatGLM-Spider
+User-agent: DoubaoBot
+User-agent: Kimi-SearchBot
+User-agent: Kimi-User
+User-agent: KimiBot
+User-agent: QwenBot
+User-agent: TongyiBot
+User-agent: YiyanBot
+User-agent: ERNIEBot
+User-agent: PanguBot
+User-agent: MistralAI-Index
+User-agent: Amzn-SearchBot
+User-agent: Bravebot
+User-agent: PhindBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /cdn-cgi/
 
 Sitemap: https://zenlesstools.online/sitemap.xml
