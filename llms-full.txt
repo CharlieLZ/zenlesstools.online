@@ -85,7 +85,7 @@ What Bangboo are (AI companions with passive bonuses and automatic chain-attack 
 - **Is this an official ZZZ site?** No. It is a fan-made project, not affiliated with or endorsed by HoYoverse.
 - **How do I redeem codes?** In-game: menu → Settings → Account → Redeem Code. Or via the official HoYoverse gift site.
 - **How does pity work?** Soft pity from pull 75, hard pity at 90, a 50/50 on the first limited 5-star, and a guarantee on the next if the last 5-star was not featured. The count carries between same-type limited banners.
-- **How often are codes updated?** After version updates, livestreams and announcements; the codes page carries a last-updated timestamp.
+- **How often are codes updated?** After version updates, livestreams and announcements.
 - **Is the site free?** Yes. All tools are free, with no login, account or payment.
 
 ## Policies
