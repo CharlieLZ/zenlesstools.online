@@ -18,7 +18,7 @@ Planner results are front-end estimates calculated from the numbers you type in,
 ## Tools
 - [ZZZ Pull Planner](https://zenlesstools.online/tools/pull-planner): enter Polychrome, Encrypted Master Tapes, pity and a banner goal to see whether you can reach it.
 - [ZZZ Material Calculator](https://zenlesstools.online/tools/material-calculator): estimate materials, Dennies and farming days needed to level agents, skills and W-Engines.
-- [ZZZ Team Builder](https://zenlesstools.online/tools/team-builder): team-building guide with archetypes, an element-pairing reference and example compositions.
+- [ZZZ Team Building Guide](https://zenlesstools.online/tools/team-builder): team-building guide with archetypes, an element-pairing reference and example compositions.
 
 ## Guides
 - [ZZZ Character Builds](https://zenlesstools.online/characters/): build-guide index with team templates and the build template explained.
