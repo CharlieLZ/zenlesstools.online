@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+  <title>Admin | zenlesstools.online</title>
+  <style>
+    :root { color-scheme: light; font-family: ui-sans-serif, system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f4f7fb; color: #17253d; line-height: 1.6; }
+    main { width: min(1060px, calc(100% - 40px)); margin: auto; padding: 44px 0 96px; }
+    a { color: #155b83; } a:focus-visible { outline: 3px solid #155b83; outline-offset: 3px; }
+    .back { font-weight: 700; text-decoration: none; } .back:hover { text-decoration: underline; }
+    header { margin: 76px 0 50px; max-width: 760px; }
+    .kicker { font-size: .82rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #155b83; }
+    h1 { margin: 14px 0; font-size: clamp(2.8rem, 7vw, 5.1rem); line-height: 1.08; }
+    header p, .note { color: #54647a; } h2 { font-size: 1.5rem; margin: 0 0 20px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .card { display: flex; flex-direction: column; gap: 10px; min-height: 150px; padding: 28px; border: 1px solid #d5deea; border-radius: 18px; background: white; color: #17253d; text-decoration: none; box-shadow: 0 14px 30px rgba(19,44,79,.06); }
+    .card:hover, .card:focus-visible { border-color: #155b83; } .card strong { color: #155b83; font-size: 1.16rem; } .card span { color: #54647a; }
+    .public { margin-top: 55px; } .public a { display: inline-block; margin-right: 18px; margin-bottom: 12px; }
+    .note { margin-top: 40px; max-width: 760px; font-size: .92rem; }
+    @media (max-width: 650px) { header { margin-top: 56px; } .grid { grid-template-columns: 1fr; } .card { min-height: 130px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back" href="/">← Back to zenlesstools.online</a>
+    <header><span class="kicker">Owner workspace</span><h1>Admin overview</h1>
+      <p>Publishing, source, and traffic services for zenlesstools.online. Each service has its own sign-in.</p></header>
+    <section aria-labelledby="operations"><h2 id="operations">Operations</h2><div class="grid">
+      <a class="card" href="https://dash.cloudflare.com/e9678a567f24c2f41ae40df77744e97e/pages/view/zenlesstools-online" target="_blank" rel="noopener noreferrer"><strong>Cloudflare Pages ↗</strong><span>Check deployments, production status, and rollback history.</span></a>
+      <a class="card" href="https://github.com/CharlieLZ/zenlesstools.online" target="_blank" rel="noopener noreferrer"><strong>Source and content ↗</strong><span>Review the site and publishing history.</span></a>
+      <a class="card" href="https://search.google.com/search-console?resource_id=sc-domain%3Azenlesstools.online" target="_blank" rel="noopener noreferrer"><strong>Search Console ↗</strong><span>Inspect indexing and search performance.</span></a>
+      <a class="card" href="https://dash.cloudflare.com/a85dcdc3df37e524a83b1950d8aa11a8/analytics" target="_blank" rel="noopener noreferrer"><strong>Cloudflare Analytics ↗</strong><span>Review requests, traffic, and availability.</span></a>
+    </div></section>
+    <section class="public" aria-labelledby="live"><h2 id="live">Live checks</h2><a href="/">Open public site ↗</a></section>
+    <p class="note">This page contains no visitor data or editing controls. Publishing and account settings remain inside their own signed-in services.</p>
+  </main>
+</body>
+</html>
