@@ -43,6 +43,7 @@ assert.equal(health.service, 'zenlesstools-online');
 assert.equal(health.buildSha, sha, 'Production health SHA differs');
 const planner = await (await page('https://zenlesstools.online/tools/pull-planner', 200)).text();
 assert(planner.includes(`assets/js/main.js?v=${sha}`), 'Planner script is not bound to the release');
+assert(planner.includes(`assets/css/style.css?v=${sha}`), 'Planner styles are not bound to the release');
 const script = await (await page(`https://zenlesstools.online/assets/js/main.js?v=${sha}`, 200)).text();
 assert.match(script, /calculator_complete/);
 assert.match(script, /Planning threshold covered/);

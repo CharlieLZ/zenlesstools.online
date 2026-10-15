@@ -20,7 +20,7 @@ async function copyPublic(directory = '') {
     } else if (entry.isFile() && (directory || entry.name.endsWith('.html') || staticFiles.has(entry.name))) {
       if (entry.name.endsWith('.html')) {
         const html = await readFile(new URL(path, root), 'utf8');
-        await writeFile(new URL(path, output), html.replace(/(assets\/js\/main\.js)(?:\?[^"']*)?/g, `$1?v=${sha}`));
+        await writeFile(new URL(path, output), html.replace(/(assets\/(?:js\/main\.js|css\/style\.css))(?:\?[^"']*)?/g, `$1?v=${sha}`));
         pages++;
       } else await cp(new URL(path, root), new URL(path, output));
     }

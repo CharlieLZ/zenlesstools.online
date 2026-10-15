@@ -468,6 +468,7 @@ section { padding: 52px 0; }
 .tag-orange { color: var(--orange); border-color: rgba(255,77,46,0.25); background: rgba(255,77,46,0.08); }
 
 .planner { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: stretch; }
+.planner .card { min-height: 0; }
 .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
 label { display: block; color: var(--muted); font-size: 13px; margin-bottom: 6px; }
