@@ -37,10 +37,19 @@ assert.deepEqual(app.destinations.map(({type,uri}) => ({type,uri})), [
 ]);
 assert.equal(app.policies?.[0]?.id, policy.id);
 await page('https://zenlesstools.online/', 200);
+const health = await (await page('https://zenlesstools.online/api/health', 200)).json();
+assert.equal(health.ok, true);
+assert.equal(health.service, 'zenlesstools-online');
+assert.equal(health.buildSha, sha, 'Production health SHA differs');
+const planner = await (await page('https://zenlesstools.online/tools/pull-planner', 200)).text();
+assert(planner.includes(`assets/js/main.js?v=${sha}`), 'Planner script is not bound to the release');
+const script = await (await page(`https://zenlesstools.online/assets/js/main.js?v=${sha}`, 200)).text();
+assert.match(script, /calculator_complete/);
+assert.match(script, /Planning threshold covered/);
 for (const url of ['https://zenlesstools.online/admin', 'https://zenlesstools.online/admin/', 'https://zenlesstools.online/admin/index.html', 'https://www.zenlesstools.online/admin/']) {
   const response = await page(url, 302);
   const login = new URL(response.headers.get('location') ?? '', url);
   assert.equal(login.hostname, 'charlie0simmon.cloudflareaccess.com');
   assert.match(login.pathname, /^\/cdn-cgi\/access\/login\//);
 }
-console.log(JSON.stringify({status: 'pass', sha, deploymentId: latest.id, previewUrl: latest.url, accessAppId: app.id, publicPaths: 1, protectedPaths: 4}));
+console.log(JSON.stringify({status: 'pass', sha, healthSha: health.buildSha, deploymentId: latest.id, previewUrl: latest.url, accessAppId: app.id, publicPaths: 4, protectedPaths: 4}));
