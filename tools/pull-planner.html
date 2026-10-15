@@ -88,7 +88,7 @@
                 </div>
                 <div>
                   <label for="goalName">Goal Name</label>
-                  <input type="text" id="goalName" placeholder="e.g. Promeia" value="Promeia" />
+                  <input type="text" id="goalName" placeholder="e.g. Promeia" value="Promeia" maxlength="100" />
                 </div>
                 <div>
                   <label for="guaranteed">Guaranteed?</label>
@@ -105,7 +105,7 @@
               <div class="form-grid" style="margin-top:16px;">
                 <div>
                   <label for="daysLeftInput">Days Until Banner Ends</label>
-                  <input type="number" id="daysLeftInput" placeholder="20" value="20" min="1" />
+                  <input type="number" id="daysLeftInput" placeholder="20" value="20" min="0" />
                 </div>
                 <div>
                   <label for="dailyIncome">Pulls Per Day (avg)</label>
@@ -117,7 +117,7 @@
             </div>
           </div>
 
-          <div class="result">
+          <div class="result" role="status" aria-live="polite" aria-atomic="true">
             <small>Available pulls</small>
             <div class="result-number" id="availablePulls">0</div>
             <h3 id="plannerTitle">Enter your resources</h3>
@@ -184,7 +184,7 @@
         <div class="faq">
           <details open><summary>How accurate is the pull planner?</summary><p>It's an estimate based on the numbers you enter. Daily income varies with events and your playtime. Use conservative estimates and add a 10-20 pull buffer for safety.</p></details>
           <details><summary>What's a good daily pull estimate?</summary><p>Pure F2P: ~0.5 pulls/day. With monthly pass: ~0.7. Monthly pass + Battle Pass: ~0.8-1.0. Events typically add 10-20 bonus pulls per version.</p></details>
-          <details><summary>Should I plan for 75 or 90 pity?</summary><p>Plan for 80-85 to be safe. Most 5★ drops happen between 75-80 pulls due to soft pity. Planning for 90 is the safest worst-case scenario.</p></details>
+          <details><summary>Should I plan for 75 or 90 pity?</summary><p>Use 90 for the hard-pity budget of one S-rank cycle. Lower thresholds are estimates, not guarantees. If the featured agent is not guaranteed, a lost 50/50 can require another cycle; this calculator shows only the first.</p></details>
         </div>
       </div>
     </section>

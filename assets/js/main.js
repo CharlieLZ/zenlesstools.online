@@ -115,20 +115,23 @@ function initCountdown(elementId, endDateStr, label) {
 function initPullPlanner() {
   const btn = document.getElementById("calculateBtn");
   if (!btn) return;
-  btn.addEventListener("click", calculate);
+  btn.addEventListener("click", () => calculate(true));
   calculate();
 }
 
-function calculate() {
-  const get = (id) => Number(document.getElementById(id)?.value || 0);
+function calculate(track = false) {
+  const get = (id, fallback = 0) => {
+    const raw = document.getElementById(id)?.value;
+    return raw == null || raw.trim() === "" ? fallback : Number(raw);
+  };
   const poly = get("poly");
   const tapes = get("tapes");
   const pity = get("pity");
-  const target = get("target") || 90;
+  const target = get("target", 90);
   const days = get("daysLeftInput");
   const daily = get("dailyIncome");
   const guaranteed = document.getElementById("guaranteed")?.value;
-  const goal = document.getElementById("goalName")?.value || "your target";
+  const goal = document.getElementById("goalName")?.value.trim().slice(0, 100) || "your target";
 
   const currentPulls = Math.floor(poly / 160) + tapes;
   const futurePulls = Math.floor(days * daily);
@@ -140,14 +143,27 @@ function calculate() {
   const titleEl = document.getElementById("plannerTitle");
   const textEl = document.getElementById("plannerText");
   const chipsEl = document.getElementById("plannerChips");
+  const valid = [poly, tapes, pity, target, days].every(value => Number.isSafeInteger(value) && value >= 0)
+    && pity <= 89 && target >= 1 && target <= 90 && Number.isFinite(daily) && daily >= 0
+    && ["yes", "no"].includes(guaranteed) && Number.isSafeInteger(available)
+    && ["poly", "tapes", "pity", "target", "daysLeftInput", "dailyIncome"].every(id => !document.getElementById(id)?.validity?.badInput);
+  if (!valid) {
+    if (availEl) availEl.textContent = "—";
+    if (titleEl) titleEl.textContent = "Check your inputs";
+    if (textEl) textEl.textContent = "Use non-negative whole numbers for savings and days, pity from 0–89, and a planning threshold from 1–90. Daily income must be a finite, non-negative number.";
+    if (chipsEl) chipsEl.innerHTML = "";
+    return;
+  }
   if (availEl) availEl.textContent = available;
-  if (titleEl) titleEl.textContent = available >= needed ? `Ready for ${goal}` : `Short for ${goal}`;
+  if (titleEl) titleEl.textContent = available >= needed ? "Planning threshold covered" : `Budget short for ${goal}`;
   if (textEl) {
-    let t = `Need ~${needed} pulls (from ${pity} pity). You have ~${available} pulls. `;
+    let t = `Need ~${needed} pulls to your ${target}-pull planning threshold (from ${pity} pity). Your estimated budget is ~${available} pulls. `;
     t += available >= needed
-      ? "You should reach your target before the banner ends."
-      : `Estimated gap: ${gap} pulls. Farm dailies and events to close it.`;
-    if (guaranteed === "no") t += " Not guaranteed — plan for a possible second pity.";
+      ? "This covers one planned S-rank cycle. "
+      : `Estimated gap: ${gap} pulls. `;
+    if (target < 90) t += "A threshold below 90 is an estimate, not a guarantee. ";
+    if (guaranteed === "no") t += "The featured agent is not guaranteed: a lost 50/50 needs another cycle, which is not included here.";
+    else t += "Featured-agent guarantee is based on the status you entered; future income is still an estimate.";
     textEl.textContent = t;
   }
   if (chipsEl) {
@@ -158,6 +174,15 @@ function calculate() {
       s.textContent = c;
       chipsEl.appendChild(s);
     });
+  }
+  if (track === true && navigator.doNotTrack !== "1" && navigator.globalPrivacyControl !== true) {
+    const query = new URLSearchParams(window.location.search);
+    const properties = { tool: "pull_planner", outcome: available >= needed ? "covered" : "short",
+      guaranteed: guaranteed === "yes", qa_internal: query.get("qa") === "1" || query.get("utm_source") === "qa-internal" };
+    try { if (typeof window.gtag === "function") window.gtag("event", "calculator_complete", properties); }
+    catch { console.warn("Pull planner analytics unavailable: google"); }
+    try { if (typeof window.plausible === "function") window.plausible("calculator_complete", { props: properties }); }
+    catch { console.warn("Pull planner analytics unavailable: plausible"); }
   }
 }
 
