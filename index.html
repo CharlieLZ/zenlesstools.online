@@ -102,12 +102,26 @@
             in one place.
           </h1>
           <p>
-            Track active ZZZ codes, limited-time events, banner countdowns, character builds, and resource planning without digging through ten tabs every day.
+            Check your pull budget, copy active codes, and track banners in one fast fan-made toolkit. No login, no payment.
           </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="/codes">Get Active Codes</a>
-            <a class="btn btn-secondary" href="/tools/pull-planner">Open Pull Planner</a>
-            <a class="btn btn-secondary" href="/daily-checklist">Daily Checklist</a>
+          <form class="quick-calc" id="miniCalc" novalidate aria-label="Quick pull budget check">
+            <div class="quick-fields">
+              <div>
+                <label for="miniPoly">Polychrome</label>
+                <input type="number" id="miniPoly" inputmode="numeric" min="0" step="1" value="16000" />
+              </div>
+              <div>
+                <label for="miniTapes">Master Tapes</label>
+                <input type="number" id="miniTapes" inputmode="numeric" min="0" step="1" value="0" />
+              </div>
+              <button class="btn btn-primary" type="submit" id="miniCalcBtn">Show my pull budget</button>
+            </div>
+            <p class="quick-result" id="miniResult" role="status" aria-live="polite"></p>
+          </form>
+          <div class="hero-links">
+            <a href="/codes">Get my active codes</a>
+            <a href="/tools/pull-planner" id="miniFullLink">Full planner: pity &amp; income</a>
+            <a href="/daily-checklist">Daily checklist</a>
           </div>
           <div class="quick-stats">
             <div class="stat"><strong>11</strong><span>Player tools</span></div>
@@ -115,17 +129,17 @@
             <div class="stat"><strong>Free</strong><span>Fan-made hub</span></div>
           </div>
         </div>
-        <aside class="hero-card" aria-label="Banner schedule reference">
-          <span class="version-badge">OFFICIAL SCHEDULE · TIMEZONE UNVERIFIED</span>
-          <h2>Version 3.2 — Phase I banners (ended)</h2>
-          <p>Claret and Nangong Yu limited banners, per the official September 7 notice, whose listed end time was September 30, 2026. Check the banner page for the latest official notices.</p>
-          <div class="countdown" aria-label="Banner schedule" id="homeCountdown"><span style="grid-column:1 / -1;">Schedule unverified — check the official notice.</span></div>
+        <aside class="hero-card" aria-label="Full pull planner features">
+          <span class="version-badge">FREE · NO LOGIN</span>
+          <h2>From quick check to full plan</h2>
+          <p>The quick check counts Polychrome and Master Tapes. The full planner adds pity, 50/50 guarantee, and daily income so you can budget a whole banner.</p>
           <div class="reward-row">
-            <span class="chip">Claret</span>
-            <span class="chip">Nangong Yu</span>
+            <span class="chip">Pity 0–89</span>
+            <span class="chip">50/50 or guaranteed</span>
+            <span class="chip">Daily income</span>
           </div>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="/banners">Banner schedule &amp; official notices</a>
+            <a class="btn btn-secondary" href="/tools/pull-planner">Open the full planner</a>
           </div>
         </aside>
       </div>
@@ -230,6 +244,5 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
-  <script>initCountdown("homeCountdown", "", "Version 3.2 Phase I banner");</script>
 </body>
 </html>

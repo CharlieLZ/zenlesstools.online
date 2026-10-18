@@ -42,7 +42,7 @@
     gtag('config', 'G-8HW2RMLZM9');
   </script>
 </head>
-<body>
+<body class="has-mobile-calc">
   <div class="notice">Fan-made ZZZ tools hub. Not affiliated with HoYoverse, miHoYo, or Zenless Zone Zero.</div>
   <header>
     <div class="container nav">
@@ -56,7 +56,7 @@
   </header>
 
   <main>
-    <div class="page-header">
+    <div class="page-header compact">
       <div class="container">
         <h1>ZZZ Pull Planner</h1>
         <p>See if your Polychrome savings can reach your banner goal before it ends</p>
@@ -113,7 +113,7 @@
                 </div>
               </div>
               <p style="color:var(--muted);font-size:12px;margin-top:10px;">F2P ~0.5 pulls/day. Monthly pass + BP ~0.8. Events add 10-20 bonus pulls per version.</p>
-              <button class="btn btn-primary" id="calculateBtn" style="width:100%;margin-top:12px;">Calculate</button>
+              <button class="btn btn-primary" id="calculateBtn" style="width:100%;margin-top:12px;">Calculate my pull budget</button>
             </div>
           </div>
 
@@ -196,6 +196,9 @@
       <div class="footer-links"><a href="/">Home</a><a href="/codes">Codes</a><a href="/events">Events</a><a href="/tools/pull-planner">Pull Planner</a><a href="/characters/">Builds</a></div>
     </div>
   </footer>
+  <div class="mobile-calc-bar">
+    <button class="btn btn-primary" type="button" id="mobileCalcBtn" aria-controls="availablePulls">Calculate my pull budget</button>
+  </div>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

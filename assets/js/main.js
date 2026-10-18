@@ -111,12 +111,82 @@ function initCountdown(elementId, endDateStr, label) {
   if (update()) countdownTimers.set(el, setInterval(update, 1000));
 }
 
+// Prefill the planner from links such as /tools/pull-planner?goal=Lucia&poly=16000
+function applyPlannerQuery() {
+  const params = new URLSearchParams(window.location.search);
+  const goal = (params.get("goal") || "").trim().slice(0, 100);
+  if (goal) {
+    const goalEl = document.getElementById("goalName");
+    if (goalEl) goalEl.value = goal;
+  }
+  for (const key of ["poly", "tapes", "pity"]) {
+    const raw = params.get(key);
+    if (raw == null || !/^\d+$/.test(raw)) continue;
+    const el = document.getElementById(key);
+    if (el) el.value = String(Math.min(Number(raw), key === "pity" ? 89 : 100000000));
+  }
+}
+
 // Pull planner calculator
 function initPullPlanner() {
   const btn = document.getElementById("calculateBtn");
   if (!btn) return;
+  applyPlannerQuery();
   btn.addEventListener("click", () => calculate(true));
   calculate();
+}
+
+// Home-page quick pull budget check
+function initMiniPullCheck() {
+  const form = document.getElementById("miniCalc");
+  if (!form) return;
+  const polyEl = document.getElementById("miniPoly");
+  const tapesEl = document.getElementById("miniTapes");
+  const resultEl = document.getElementById("miniResult");
+  const fullLink = document.getElementById("miniFullLink");
+  const wholeNumber = (el) => {
+    const value = Number(el?.value);
+    return Number.isSafeInteger(value) && value >= 0 ? value : 0;
+  };
+  function render(track = false) {
+    const poly = wholeNumber(polyEl);
+    const tapes = wholeNumber(tapesEl);
+    const pulls = Math.floor(poly / 160) + tapes;
+    if (resultEl) {
+      resultEl.textContent = `${pulls.toLocaleString()} pull${pulls === 1 ? "" : "s"} available now — ${poly.toLocaleString()} Polychrome + ${tapes} Master Tape${tapes === 1 ? "" : "s"}.`;
+    }
+    if (fullLink) fullLink.href = `/tools/pull-planner?poly=${poly}&tapes=${tapes}`;
+    if (track === true && navigator.doNotTrack !== "1" && navigator.globalPrivacyControl !== true) {
+      const query = new URLSearchParams(window.location.search);
+      const properties = {
+        tool: "home_mini",
+        outcome: pulls > 0 ? "has_pulls" : "no_pulls",
+        qa_internal: query.get("qa") === "1" || query.get("utm_source") === "qa-internal"
+      };
+      try { if (typeof window.gtag === "function") window.gtag("event", "calculator_complete", properties); }
+      catch { console.warn("Mini pull check analytics unavailable: google"); }
+    }
+  }
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    render(true);
+  });
+  polyEl?.addEventListener("input", () => render(false));
+  tapesEl?.addEventListener("input", () => render(false));
+  render(false);
+}
+
+// Sticky mobile action for the full planner
+function initMobileCalcBar() {
+  const btn = document.getElementById("mobileCalcBtn");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    calculate(true);
+    const result = document.querySelector(".result");
+    if (!result) return;
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    result.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+  });
 }
 
 function calculate(track = false) {
@@ -233,6 +303,8 @@ function initChecklist() {
 document.addEventListener("DOMContentLoaded", () => {
   initCopyButtons();
   initPullPlanner();
+  initMiniPullCheck();
   initMaterialCalc();
   initChecklist();
+  initMobileCalcBar();
 });
