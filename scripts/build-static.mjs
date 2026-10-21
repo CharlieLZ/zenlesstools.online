@@ -2,6 +2,8 @@ import { execFileSync } from 'node:child_process';
 import { cp, mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
+import { withSocialTags } from './social-tags.mjs';
+
 const root = new URL('../', import.meta.url);
 const sha = process.env.CF_PAGES_COMMIT_SHA || execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
 if (!/^[a-f0-9]{40}$/.test(sha)) throw new Error('A full Git SHA is required for this build');
@@ -20,7 +22,8 @@ async function copyPublic(directory = '') {
     } else if (entry.isFile() && (directory || entry.name.endsWith('.html') || staticFiles.has(entry.name))) {
       if (entry.name.endsWith('.html')) {
         const html = await readFile(new URL(path, root), 'utf8');
-        await writeFile(new URL(path, output), html.replace(/(assets\/(?:js\/main\.js|css\/style\.css))(?:\?[^"']*)?/g, `$1?v=${sha}`));
+        const versioned = html.replace(/(assets\/(?:js\/main\.js|css\/style\.css))(?:\?[^"']*)?/g, `$1?v=${sha}`);
+        await writeFile(new URL(path, output), withSocialTags(versioned));
         pages++;
       } else await cp(new URL(path, root), new URL(path, output));
     }
