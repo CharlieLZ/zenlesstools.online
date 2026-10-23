@@ -54,8 +54,8 @@ The mechanics it explains:
 
 Income references on the page: daily commissions 60 Polychrome, monthly pass 90 Polychrome per day, video store roughly 20–40 Polychrome per day; Hollow Zero roughly 160 Polychrome per week, Shiyu Defense up to 720 Polychrome; events 500–1500+ Polychrome, livestream codes 300 Polychrome. Its FAQ suggests planning for 80–85 pulls as a safe target and using a 10–20 pull buffer, and gives rough daily pull rates for free-to-play and monthly-pass players.
 
-### Material calculator — https://zenlesstools.online/tools/material-calculator
-Enter target agent level, target skill level and target W-Engine level to estimate investigation merits, Dennies, core skill materials, W-Engine components, logs and ascension seals, plus the stamina days they imply. The page states clearly that this is an approximation and that actual amounts vary per agent. It also lists where each material type is farmed (HIA courses, weekly Expert Challenge, Notorious Hunt boss hunts).
+### Leveling calculator — https://zenlesstools.online/tools/material-calculator
+A ZZZ leveling calculator: enter a target agent level, target skill level and target W-Engine level to estimate investigation merits, Dennies, core skill materials, W-Engine components, logs and ascension seals, plus the stamina days they imply. The page notes agents and W-Engines cap at level 60 and skills at level 12, states clearly that the totals are an approximation that varies per agent, lists where each material type is farmed (HIA courses, weekly Expert Challenge, Notorious Hunt boss hunts), and links to the tier list, build guides, W-Engine and Drive Disc references and the pull planner.
 
 ### Team builder — https://zenlesstools.online/tools/team-builder
 A written team-building guide rather than an interactive tool: it explains three archetypes — hypercarry (main DPS plus stun plus support), anomaly/disorder (two anomaly agents of different elements plus a flex slot) and mono element — and gives example compositions with role and element notes, plus a role-synergy and element-pairing reference.
@@ -102,7 +102,7 @@ What Bangboo are (AI companions with passive bonuses and automatic chain-attack 
 - Banners: https://zenlesstools.online/banners
 - Daily checklist: https://zenlesstools.online/daily-checklist
 - Pull planner: https://zenlesstools.online/tools/pull-planner
-- Material calculator: https://zenlesstools.online/tools/material-calculator
+- Leveling calculator: https://zenlesstools.online/tools/material-calculator
 - Team builder: https://zenlesstools.online/tools/team-builder
 - Character builds: https://zenlesstools.online/characters/
 - Promeia build: https://zenlesstools.online/characters/promeia-build
