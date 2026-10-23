@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZZZ Material Calculator — Ascension & Skill Planner</title>
-  <meta name="description" content="Calculate how many materials, Dennies, and stamina days you need to level up Zenless Zone Zero agents, skills, and W-Engines. Plan your farming efficiently." />
-  <meta name="keywords" content="ZZZ material calculator, zenless zone zero farming planner, zzz ascension materials, zzz skill materials, zzz dennies calculator, zzz stamina planner" />
+  <title>ZZZ Leveling Calculator — Agent Level-Up & Material Planner</title>
+  <meta name="description" content="Free ZZZ leveling calculator: see the materials, Dennies and farming days to level any agent, skill or W-Engine to max. Plan your leveling efficiently." />
+  <meta name="keywords" content="zzz leveling calculator, zzz level up calculator, zzz leveling guide, ZZZ material calculator, zenless zone zero farming planner, zzz ascension materials, zzz skill materials, zzz dennies calculator, zzz stamina planner" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://zenlesstools.online/tools/material-calculator" />
-  <meta property="og:title" content="ZZZ Material Calculator — Ascension & Skill Planner" />
-  <meta property="og:description" content="Calculate how many materials, Dennies, and stamina days you need to level up Zenless Zone Zero agents, skills, and W-Engines. Plan your farming efficiently." />
+  <meta property="og:title" content="ZZZ Leveling Calculator — Agent Level-Up & Material Planner" />
+  <meta property="og:description" content="Free ZZZ leveling calculator: see the materials, Dennies and farming days to level any agent, skill or W-Engine to max. Plan your leveling efficiently." />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="ZZZ Material Calculator — Ascension & Skill Planner" />
-  <meta name="twitter:description" content="Calculate how many materials, Dennies, and stamina days you need to level up Zenless Zone Zero agents, skills, and W-Engines. Plan your farming efficiently." />
+  <meta name="twitter:title" content="ZZZ Leveling Calculator — Agent Level-Up & Material Planner" />
+  <meta name="twitter:description" content="Free ZZZ leveling calculator: see the materials, Dennies and farming days to level any agent, skill or W-Engine to max. Plan your leveling efficiently." />
   <meta property="og:image" content="https://zenlesstools.online/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -27,10 +27,52 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "ZZZ Material Calculator",
+    "name": "ZZZ Leveling Calculator",
     "url": "https://zenlesstools.online/tools/material-calculator",
-    "description": "Estimate materials, Dennies, and stamina needed to level up Zenless Zone Zero agents, skills, and W-Engines.",
+    "description": "Estimate the materials, Dennies, and stamina days needed to level up Zenless Zone Zero agents, skills, and W-Engines.",
     "applicationCategory": "GameApplication"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "ZZZ Leveling Calculator — Agent Level-Up & Material Planner",
+    "description": "Free ZZZ leveling calculator: see the materials, Dennies and farming days to level any agent, skill or W-Engine to max.",
+    "dateModified": "2026-10-23"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://zenlesstools.online/" },
+      { "@type": "ListItem", "position": 2, "name": "Leveling Calculator", "item": "https://zenlesstools.online/tools/material-calculator" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is a ZZZ leveling calculator?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A ZZZ leveling calculator estimates the materials, Dennies and farming days needed to level an agent, skill or W-Engine to your target level. Enter a target level and the tool totals the materials and estimated days at 180 stamina per day. Results are planning approximations, not exact in-game costs." }
+      },
+      { "@type": "Question", "name": "What is the max level in Zenless Zone Zero?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Agents and W-Engines cap at level 60, and each skill caps at level 12. Reaching the higher brackets costs far more Dennies and materials, as shown in the Leveling Costs Reference above." }
+      },
+      { "@type": "Question", "name": "How accurate is the material calculator?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It provides estimates based on level-to-material ratios. Actual costs vary per agent rarity (S-Rank costs more than A-Rank). Use as a planning guide, not exact numbers." }
+      },
+      { "@type": "Question", "name": "What should I farm first?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Weekly-gated materials first: Expert Challenge (Core Skill mats) and Notorious Hunt (Ascension Seals). Then Dennies, then Investigation Merits, then W-Engine components." }
+      },
+      { "@type": "Question", "name": "How long does it take to max an agent?",
+        "acceptedAnswer": { "@type": "Answer", "text": "From level 1 to 60 with all skills at 10, typically 2-3 weeks of dedicated farming (assuming 180 stamina/day + weekly boss mats)." }
+      }
+    ]
   }
   </script>
   <script defer data-domain="zenlesstools.online" src="https://click.pageview.click/js/script.js"></script>
@@ -56,12 +98,23 @@
   </header>
 
   <main>
+    <div class="breadcrumb"><div class="container"><a href="/">Home</a><span class="sep">/</span>Leveling Calculator</div></div>
+
     <div class="page-header">
       <div class="container">
-        <h1>Material Calculator</h1>
-        <p>Plan your farming — see how many materials, Dennies, and days you need to level an agent</p>
+        <h1>ZZZ Leveling Calculator</h1>
+        <p>Level up agents, skills and W-Engines — plan the materials, Dennies and days to reach your target level</p>
       </div>
     </div>
+
+    <section>
+      <div class="container">
+        <div class="how-to" style="margin-top:0;">
+          <h3>Short answer: how ZZZ leveling works</h3>
+          <p>In Zenless Zone Zero, agents and W-Engines level up to <strong>60</strong> and each skill caps at <strong>12</strong>. Every bracket costs increasing amounts of <strong>Dennies</strong> plus farmable materials, so a leveling calculator helps you total exactly what to farm and roughly how many days it takes. Enter your target levels below for an instant estimate, then use the <a href="#farming-locations">farming locations</a> and the <a href="#leveling-costs">leveling costs reference</a> to plan your runs.</p>
+        </div>
+      </div>
+    </section>
 
     <section>
       <div class="container">
@@ -86,7 +139,7 @@
               <p style="color:var(--muted);font-size:12px;margin-top:10px;">Enter target levels to estimate mats. This is an approximation — actual amounts vary per agent.</p>
             </div>
 
-            <div class="card" style="margin-top:16px;">
+            <div class="card" id="farming-locations" style="margin-top:16px;">
               <h3>Farming Locations</h3>
               <table class="table" style="margin-top:10px;">
                 <thead><tr><th>Material Type</th><th>Best Farm Source</th></tr></thead>
@@ -122,7 +175,7 @@
       </div>
     </section>
 
-    <section>
+    <section id="leveling-costs">
       <div class="container">
         <div class="section-head"><div><h2>Leveling Costs Reference</h2></div></div>
         <div class="grid-3">
@@ -156,6 +209,7 @@
             </ul>
           </div>
         </div>
+        <p style="color:var(--muted);font-size:14px;margin-top:18px;">Not sure which agent to level first? Check the <a href="/tier-list" style="text-decoration:underline;">agent tier list</a>, then pick a <a href="/characters/" style="text-decoration:underline;">build guide</a> and match your <a href="/w-engines" style="text-decoration:underline;">W-Engine</a> and <a href="/drive-discs" style="text-decoration:underline;">Drive Discs</a>. Budget your Polychrome with the <a href="/tools/pull-planner" style="text-decoration:underline;">pull planner</a> before pulling for a new agent.</p>
       </div>
     </section>
 
@@ -163,7 +217,9 @@
       <div class="container">
         <div class="section-head"><div><h2>FAQ</h2></div></div>
         <div class="faq">
-          <details open><summary>How accurate is the material calculator?</summary><p>It provides estimates based on level-to-material ratios. Actual costs vary per agent rarity (S-Rank costs more than A-Rank). Use as a planning guide, not exact numbers.</p></details>
+          <details open><summary>What is a ZZZ leveling calculator?</summary><p>A ZZZ leveling calculator estimates the materials, Dennies and farming days needed to level an agent, skill or W-Engine to your target level. Enter a target level and the tool totals the materials and estimated days at 180 stamina per day. Results are planning approximations, not exact in-game costs.</p></details>
+          <details><summary>What is the max level in Zenless Zone Zero?</summary><p>Agents and W-Engines cap at level 60, and each skill caps at level 12. Reaching the higher brackets costs far more Dennies and materials, as shown in the Leveling Costs Reference above.</p></details>
+          <details><summary>How accurate is the material calculator?</summary><p>It provides estimates based on level-to-material ratios. Actual costs vary per agent rarity (S-Rank costs more than A-Rank). Use as a planning guide, not exact numbers.</p></details>
           <details><summary>What should I farm first?</summary><p>Weekly-gated materials first: Expert Challenge (Core Skill mats) and Notorious Hunt (Ascension Seals). Then Dennies, then Investigation Merits, then W-Engine components.</p></details>
           <details><summary>How long does it take to max an agent?</summary><p>From level 1 to 60 with all skills at 10, typically 2-3 weeks of dedicated farming (assuming 180 stamina/day + weekly boss mats).</p></details>
         </div>
