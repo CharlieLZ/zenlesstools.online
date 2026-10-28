@@ -3,6 +3,7 @@ import { cp, mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 import { withSocialTags } from './social-tags.mjs';
+import { withStructuredData } from './structured-data.mjs';
 
 const root = new URL('../', import.meta.url);
 const sha = process.env.CF_PAGES_COMMIT_SHA || execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
@@ -23,7 +24,7 @@ async function copyPublic(directory = '') {
       if (entry.name.endsWith('.html')) {
         const html = await readFile(new URL(path, root), 'utf8');
         const versioned = html.replace(/(assets\/(?:js\/main\.js|css\/style\.css))(?:\?[^"']*)?/g, `$1?v=${sha}`);
-        await writeFile(new URL(path, output), withSocialTags(versioned));
+        await writeFile(new URL(path, output), withStructuredData(withSocialTags(versioned)));
         pages++;
       } else await cp(new URL(path, root), new URL(path, output));
     }
