@@ -88,7 +88,7 @@
                 </div>
                 <div>
                   <label for="goalName">Goal Name</label>
-                  <input type="text" id="goalName" placeholder="e.g. Promeia" value="Promeia" maxlength="100" />
+                  <input type="text" id="goalName" placeholder="Your banner goal" value="" maxlength="100" />
                 </div>
                 <div>
                   <label for="guaranteed">Guaranteed?</label>
@@ -105,15 +105,20 @@
               <div class="form-grid" style="margin-top:16px;">
                 <div>
                   <label for="daysLeftInput">Days Until Banner Ends</label>
-                  <input type="number" id="daysLeftInput" placeholder="20" value="20" min="0" />
+                  <input type="number" id="daysLeftInput" placeholder="0" value="0" min="0" />
                 </div>
                 <div>
                   <label for="dailyIncome">Pulls Per Day (avg)</label>
-                  <input type="number" id="dailyIncome" placeholder="0.8" value="0.8" min="0" step="0.1" />
+                  <input type="number" id="dailyIncome" placeholder="0" value="0" min="0" step="0.1" />
                 </div>
               </div>
-              <p style="color:var(--muted);font-size:12px;margin-top:10px;">F2P ~0.5 pulls/day. Monthly pass + BP ~0.8. Events add 10-20 bonus pulls per version.</p>
+              <p style="color:var(--muted);font-size:12px;margin-top:10px;">Future income starts at zero. Enter only your own conservative estimate from rewards you can actually claim; paid passes and unconfirmed event rewards are not assumed.</p>
               <button class="btn btn-primary" id="calculateBtn" style="width:100%;margin-top:12px;">Calculate my pull budget</button>
+              <div class="hero-actions" style="margin-top:12px;">
+                <button type="button" class="btn btn-secondary" id="savePlanBtn">Save plan on this device</button>
+                <button type="button" class="btn btn-secondary" id="restorePlanBtn">Restore saved plan</button>
+              </div>
+              <p id="planStorageStatus" role="status" style="font-size:13px;">One plan can be saved in this browser. It is a snapshot, not a synced account or an automatic income tracker.</p>
             </div>
           </div>
 
@@ -130,11 +135,12 @@
 
     <section>
       <div class="container">
-        <div class="section-head"><div><h2>How Pity Works</h2></div></div>
+        <div class="section-head"><div><h2>Standard Exclusive Agent planning assumptions</h2></div></div>
+        <p>Use the current in-game Signal Search Details to confirm the rules. W-Engine, Bangboo and special channels are outside this calculator.</p>
         <table class="table">
           <thead><tr><th>Mechanic</th><th>Details</th></tr></thead>
           <tbody>
-            <tr><td>Soft Pity</td><td>From pull 75, 5★ drop rate increases sharply</td></tr>
+            <tr><td>Below hard pity</td><td>A lower planning threshold is not a guarantee. This tool does not estimate a soft-pity probability curve.</td></tr>
             <tr><td>Hard Pity</td><td>Pull 90 guarantees a 5★</td></tr>
             <tr><td>50/50</td><td>First 5★ on limited banner: 50% chance featured agent</td></tr>
             <tr><td>Guarantee</td><td>If your last 5★ was not featured, the next is guaranteed featured</td></tr>
@@ -154,7 +160,7 @@
             <ul style="color:var(--muted);font-size:14px;padding-left:18px;">
               <li>Daily Commissions: 60 Poly</li>
               <li>Monthly Pass: 90 Poly/day</li>
-              <li>Video Store: ~20-40 Poly/day</li>
+              <li>Count only Polychrome shown in the reward screen; other currencies do not buy these pulls.</li>
             </ul>
           </div>
           <div class="card">
@@ -182,9 +188,9 @@
       <div class="container">
         <div class="section-head"><div><h2>FAQ</h2></div></div>
         <div class="faq">
-          <details open><summary>How accurate is the pull planner?</summary><p>It's an estimate based on the numbers you enter. Daily income varies with events and your playtime. Use conservative estimates and add a 10-20 pull buffer for safety.</p></details>
-          <details><summary>What's a good daily pull estimate?</summary><p>Pure F2P: ~0.5 pulls/day. With monthly pass: ~0.7. Monthly pass + Battle Pass: ~0.8-1.0. Events typically add 10-20 bonus pulls per version.</p></details>
-          <details><summary>Should I plan for 75 or 90 pity?</summary><p>Use 90 for the hard-pity budget of one S-rank cycle. Lower thresholds are estimates, not guarantees. If the featured agent is not guaranteed, a lost 50/50 can require another cycle; this calculator shows only the first.</p></details>
+          <details open><summary>How accurate is the pull planner?</summary><p>Current resources are separated from estimated future income. The worst-case budget assumes the standard Exclusive Agent 90-pull and 50/50 rules, based on the pity and guarantee status you enter. Confirm Signal Search → Details in-game; W-Engine, Bangboo, discounted and special channels are not covered.</p></details>
+          <details><summary>What's a good daily pull estimate?</summary><p>Start at zero, then add only rewards you expect to claim. Do not buy a pass or exceed your spending limit to close a calculated gap. Skipping a banner remains an option.</p></details>
+          <details><summary>Should I plan for 75 or 90 pity?</summary><p>90 is the hard-pity budget for one standard S-rank cycle. Lower thresholds are estimates, not guarantees. Without a featured guarantee, the worst-case budget includes a second 90-pull cycle; projected future income is still not owned currency.</p></details>
         </div>
       </div>
     </section>

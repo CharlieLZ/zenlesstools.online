@@ -18,7 +18,13 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-block: 88px 100px; }
+
+/* Keep planner controls clear of the sticky header and mobile calculate bar. */
+.has-mobile-calc input, .has-mobile-calc select, .has-mobile-calc button { scroll-margin-block: 20px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
 
 body {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;

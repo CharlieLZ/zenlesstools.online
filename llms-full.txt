@@ -25,7 +25,7 @@ Two kinds of numbers appear on the site, and both are labelled in place:
 Overview of the hub, the current banner reference, a short FAQ (official status, code redemption, pity rules, update cadence, pricing) and links into every tool and guide.
 
 ### Codes — https://zenlesstools.online/codes
-Active and recently expired ZZZ redeem codes with rewards, one-click copy buttons and redemption steps. The page states that codes are checked after each version update, livestream and official announcement, and that it updates within 24 hours of new codes dropping. It also notes that a code that does not work may have expired, be region-locked, or already be redeemed on your account.
+Redeem-code references, explicit unverified availability, confirmed expiry notices and redemption steps. A copy button does not prove redemption eligibility. No automatic 24-hour update service is promised.
 
 Redeeming: in-game, open the menu → Settings (gear icon) → Account → Redeem Code. Codes can also be redeemed on the official HoYoverse gift site.
 

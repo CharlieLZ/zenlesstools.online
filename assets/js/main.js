@@ -133,7 +133,57 @@ function initPullPlanner() {
   if (!btn) return;
   applyPlannerQuery();
   btn.addEventListener("click", () => calculate(true));
+  initPlannerStorage();
   calculate();
+}
+
+function plannerValuesValid(p) {
+  return !!p && [p.poly, p.tapes, p.pity, p.target, p.days].every(value => Number.isSafeInteger(value) && value >= 0)
+    && p.pity <= 89 && p.target >= 1 && p.target <= 90 && Number.isFinite(p.daily) && p.daily >= 0
+    && ["yes", "no"].includes(p.guaranteed) && typeof p.goal === "string" && p.goal.length <= 100
+    && Number.isSafeInteger(Math.floor(p.poly / 160) + p.tapes + Math.floor(p.days * p.daily));
+}
+
+function trackPlannerAction(name) {
+  if (navigator.doNotTrack === "1" || navigator.globalPrivacyControl === true) return;
+  const props = { tool: "pull_planner", qa_internal: new URLSearchParams(window.location.search).get("qa") === "1" };
+  try { window.gtag?.("event", name, props); } catch { /* Saving never depends on analytics. */ }
+  try { window.plausible?.(name, { props }); } catch { /* Optional analytics. */ }
+}
+
+function initPlannerStorage() {
+  const save = document.getElementById("savePlanBtn"), restore = document.getElementById("restorePlanBtn"), status = document.getElementById("planStorageStatus");
+  if (!save || !restore || !status) return;
+  const key = "zzz-pull-plan-v1";
+  const fields = {poly:"poly",tapes:"tapes",pity:"pity",target:"target",days:"daysLeftInput",daily:"dailyIncome",guaranteed:"guaranteed",goal:"goalName"};
+  save.addEventListener("click", () => {
+    const inputs = calculate(false);
+    if (!inputs) { status.textContent = "Fix the inputs before saving. Your previous saved plan has not changed."; return; }
+    try {
+      const savedAt = new Date().toISOString();
+      localStorage.setItem(key, JSON.stringify({version:1, savedAt, lastVisitDay:savedAt.slice(0,10), inputs}));
+      status.textContent = "Saved in this browser. Restore it on your next visit and update your resources and remaining days.";
+      trackPlannerAction("plan_saved");
+    } catch { status.textContent = "Browser storage is unavailable. You can still calculate, but this plan was not saved."; }
+  });
+  restore.addEventListener("click", () => {
+    try {
+      const raw = localStorage.getItem(key);
+      if (!raw) { status.textContent = "No saved plan in this browser yet."; return; }
+      if (raw.length > 10000) throw new Error("invalid saved plan");
+      const saved = JSON.parse(raw);
+      if (saved?.version !== 1 || !plannerValuesValid(saved.inputs) || typeof saved.savedAt !== "string" || !Number.isFinite(Date.parse(saved.savedAt))) throw new Error("invalid saved plan");
+      for (const [name, id] of Object.entries(fields)) document.getElementById(id).value = String(saved.inputs[name]);
+      calculate(false);
+      status.textContent = `Restored the snapshot saved ${saved.savedAt.slice(0,10)}. Update resources and remaining days before using it; future income has not been earned automatically.`;
+      trackPlannerAction("plan_restored");
+      const today = new Date().toISOString().slice(0,10);
+      if (saved.savedAt.slice(0,10) < today && saved.lastVisitDay !== today) {
+        saved.lastVisitDay = today;
+        try { localStorage.setItem(key, JSON.stringify(saved)); trackPlannerAction("plan_daily_return"); } catch { /* Restore still works; no duplicate return claim without persistence. */ }
+      }
+    } catch { status.textContent = "Saved plan unavailable or invalid. Your current inputs were kept; calculation still works."; }
+  });
 }
 
 // Home-page quick pull budget check
@@ -213,9 +263,8 @@ function calculate(track = false) {
   const titleEl = document.getElementById("plannerTitle");
   const textEl = document.getElementById("plannerText");
   const chipsEl = document.getElementById("plannerChips");
-  const valid = [poly, tapes, pity, target, days].every(value => Number.isSafeInteger(value) && value >= 0)
-    && pity <= 89 && target >= 1 && target <= 90 && Number.isFinite(daily) && daily >= 0
-    && ["yes", "no"].includes(guaranteed) && Number.isSafeInteger(available)
+  const plan = {poly, tapes, pity, target, days, daily, guaranteed, goal};
+  const valid = plannerValuesValid(plan)
     && ["poly", "tapes", "pity", "target", "daysLeftInput", "dailyIncome"].every(id => !document.getElementById(id)?.validity?.badInput);
   if (!valid) {
     if (availEl) availEl.textContent = "—";
@@ -229,16 +278,18 @@ function calculate(track = false) {
   if (textEl) {
     let t = `Need ~${needed} pulls to your ${target}-pull planning threshold (from ${pity} pity). Your estimated budget is ~${available} pulls. `;
     t += available >= needed
-      ? "This covers one planned S-rank cycle. "
+      ? "This covers your chosen planning threshold. "
       : `Estimated gap: ${gap} pulls. `;
     if (target < 90) t += "A threshold below 90 is an estimate, not a guarantee. ";
-    if (guaranteed === "no") t += "The featured agent is not guaranteed: a lost 50/50 needs another cycle, which is not included here.";
-    else t += "Featured-agent guarantee is based on the status you entered; future income is still an estimate.";
+    if (guaranteed === "no") t += "The featured agent is not guaranteed by this first cycle: a lost 50/50 needs another cycle. ";
+    else t += "Featured-agent guarantee is based on the status you entered; future income is still an estimate. ";
+    const hard = 90 - pity, featured = hard + (guaranteed === "yes" ? 0 : 90);
+    t += ` Under the standard Exclusive Agent 90-pull / 50-50 rules, budget up to ${hard} more pulls for the next S-rank and ${featured} for the featured agent in the worst case. You hold ${currentPulls} pulls now; ${futurePulls} future pulls are only an estimate. A budget gap is not a recommendation to spend: keep your limit or skip this banner.`;
     textEl.textContent = t;
   }
   if (chipsEl) {
     chipsEl.innerHTML = "";
-    [currentPulls + " now", futurePulls + " future", gap + " gap", guaranteed === "yes" ? "Guaranteed" : "50/50"].forEach((c) => {
+    [currentPulls + " now", futurePulls + " estimated future", gap + " threshold gap", guaranteed === "yes" ? "Guarantee entered" : "50/50"].forEach((c) => {
       const s = document.createElement("span");
       s.className = "chip";
       s.textContent = c;
@@ -254,6 +305,7 @@ function calculate(track = false) {
     try { if (typeof window.plausible === "function") window.plausible("calculator_complete", { props: properties }); }
     catch { console.warn("Pull planner analytics unavailable: plausible"); }
   }
+  return plan;
 }
 
 // Material calculator

@@ -4,17 +4,19 @@ const { join } = require('node:path');
 const test = require('node:test');
 const vm = require('node:vm');
 
-function fixture({ privacy = false, trackerFails = false } = {}) {
+function fixture({ privacy = false, trackerFails = false, storageFails = false } = {}) {
   const elements = new Map();
   const events = [];
   const warnings = [];
   for (const [id, value] of Object.entries({poly:'14400',tapes:'0',pity:'0',target:'90',daysLeftInput:'0',dailyIncome:'0',guaranteed:'no',goalName:'Private goal'})) {
     elements.set(id, {value});
   }
-  for (const id of ['calculateBtn','availablePulls','plannerTitle','plannerText','plannerChips']) {
+  for (const id of ['calculateBtn','availablePulls','plannerTitle','plannerText','plannerChips','savePlanBtn','restorePlanBtn','planStorageStatus']) {
     elements.set(id, {textContent:'',innerHTML:'',addEventListener(_name, fn) {this.click = fn;},appendChild() {}});
   }
+  const storage = new Map();
   const context = vm.createContext({
+    localStorage: {getItem(key) {if(storageFails) throw new Error('denied');return storage.get(key) ?? null;},setItem(key,value) {if(storageFails) throw new Error('denied');storage.set(key,value);}},
     document: {getElementById: id => elements.get(id), addEventListener() {}, createElement: () => ({})},
     navigator: {doNotTrack: privacy === true ? '1' : '0',globalPrivacyControl: privacy === 'gpc'}, URLSearchParams,
     window: {location: {search:'?qa=1'}, gtag(...args) {if(trackerFails) throw new Error('tracker failed');events.push(args);}},
@@ -22,7 +24,7 @@ function fixture({ privacy = false, trackerFails = false } = {}) {
   });
   vm.runInContext(readFileSync(join(__dirname,'../assets/js/main.js'),'utf8'),context);
   context.initPullPlanner();
-  return {elements,events,warnings,context,click:()=>elements.get('calculateBtn').click()};
+  return {elements,events,warnings,context,storage,click:()=>elements.get('calculateBtn').click()};
 }
 
 test('enough for one attempt does not promise the featured agent', () => {
@@ -67,4 +69,47 @@ test('zero days and blank savings are safe, with no fabricated future income', (
   const p=fixture();p.elements.get('poly').value='';p.elements.get('tapes').value='';
   p.elements.get('dailyIncome').value='0.8';p.click();
   assert.equal(p.elements.get('availablePulls').textContent,0);
+});
+
+test('worst-case featured budget distinguishes the entered guarantee from one S-rank cycle', () => {
+  const p=fixture();p.elements.get('pity').value='89';p.click();
+  assert.match(p.elements.get('plannerText').textContent,/1 more pulls.*91 for the featured/);
+  p.elements.get('guaranteed').value='yes';p.click();
+  assert.match(p.elements.get('plannerText').textContent,/1 more pulls.*1 for the featured/);
+  p.elements.get('target').value='75';p.elements.get('pity').value='0';p.click();
+  assert.match(p.elements.get('plannerText').textContent,/below 90 is an estimate/);
+});
+
+test('save and restore preserve the snapshot without turning future rewards into owned pulls', () => {
+  const p=fixture();p.elements.get('daysLeftInput').value='10';p.elements.get('dailyIncome').value='0.5';
+  p.elements.get('savePlanBtn').click();p.elements.get('poly').value='0';p.elements.get('restorePlanBtn').click();
+  assert.equal(p.elements.get('poly').value,'14400');assert.equal(p.elements.get('availablePulls').textContent,95);
+  assert.match(p.elements.get('plannerText').textContent,/90 pulls now; 5 future pulls are only an estimate/);
+  assert.match(p.elements.get('planStorageStatus').textContent,/Update resources and remaining days/);
+  assert.deepEqual(p.events.map(e=>e[1]),['plan_saved','plan_restored']);
+  assert.doesNotMatch(JSON.stringify(p.events),/Private goal|14400/);
+});
+
+test('an older plan records a daily return only once, not on every restore', () => {
+  const p=fixture();p.elements.get('savePlanBtn').click();
+  const saved=JSON.parse(p.storage.get('zzz-pull-plan-v1'));saved.savedAt='2026-01-01T00:00:00.000Z';saved.lastVisitDay='2026-01-01';
+  p.storage.set('zzz-pull-plan-v1',JSON.stringify(saved));
+  p.elements.get('restorePlanBtn').click();p.elements.get('restorePlanBtn').click();
+  assert.equal(p.events.filter(e=>e[1]==='plan_daily_return').length,1);
+});
+
+test('corrupt, incompatible or unsafe stored data cannot replace current inputs', () => {
+  const p=fixture();p.elements.get('savePlanBtn').click();const valid=JSON.parse(p.storage.get('zzz-pull-plan-v1'));
+  for(const raw of ['{',JSON.stringify({...valid,version:2}),JSON.stringify({...valid,inputs:{...valid.inputs,pity:100}})]) {
+    p.storage.set('zzz-pull-plan-v1',raw);p.elements.get('restorePlanBtn').click();
+    assert.equal(p.elements.get('poly').value,'14400');assert.match(p.elements.get('planStorageStatus').textContent,/unavailable or invalid/);
+  }
+});
+
+test('blocked storage does not claim saved, and invalid input cannot overwrite an existing plan', () => {
+  const denied=fixture({storageFails:true});denied.elements.get('savePlanBtn').click();
+  assert.match(denied.elements.get('planStorageStatus').textContent,/not saved/);assert.equal(denied.events.length,0);denied.click();
+  assert.equal(denied.elements.get('availablePulls').textContent,90);
+  const p=fixture();p.elements.get('savePlanBtn').click();const previous=p.storage.get('zzz-pull-plan-v1');
+  p.elements.get('poly').value='-1';p.elements.get('savePlanBtn').click();assert.equal(p.storage.get('zzz-pull-plan-v1'),previous);
 });

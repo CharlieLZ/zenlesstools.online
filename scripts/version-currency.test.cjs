@@ -1,5 +1,7 @@
 "use strict";
 
+// Source refresh 2026-11-09: official 166926 and 166963 establish Version 3.3.
+// Earlier source-history notes below are historical, not current release claims.
 // Round D (2026-10-02) — version/date currency.
 //
 // Verified 2026-10-02 from primary sources: the live Zenless Zone Zero version
@@ -36,9 +38,9 @@ test("no page claims a version other than the verified current one", () => {
 
 test("the pages that announce a version announce the verified one", () => {
   const home = readFileSync(join(ROOT, "index.html"), "utf8");
-  assert.match(home, /Version 3\.2/, "home must state the verified current version");
+  assert.match(home, /Version 3\.3/, "home must state the verified current version");
   const banners = readFileSync(join(ROOT, "banners.html"), "utf8");
-  assert.match(banners, /Version 3\.2/, "banners must state the verified current version");
+  assert.match(banners, /Version 3\.3/, "banners must state the verified current version");
 });
 
 test("no page carries a date we cannot verify", () => {
